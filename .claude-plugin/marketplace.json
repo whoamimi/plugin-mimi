@@ -1,0 +1,18 @@
+{
+    "name": "plugin-mimi",
+    "version": "1.0.0",
+    "description": "Mimi's personal skill bundle covering life, soft, and tech skills.",
+    "categories": {
+      "soft-skills": {
+        "description": "Skills for communication, writing, vocabulary, and interpersonal expression.",
+        "skills": [
+          "skills/soft-skills",
+          "skills/soft-skills/skills/mimi-speak",
+          "skills/soft-skills/skills/mimi-vocab-teach",
+          "skills/soft-skills/skills/mimi-write",
+          "skills/soft-skills/skills/mimi-write-elevate",
+          "skills/soft-skills/skills/mimi-write-suggest"
+        ]
+      }
+    }
+  }
