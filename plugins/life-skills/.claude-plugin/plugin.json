@@ -1,0 +1,9 @@
+{
+    "name": "life-skills",
+    "description": "Bundled skills to assist user's life in managing balance of adult ife responsibilities e.g. emails, self-care, life balance, life management tools, seeking opportunities, paying bills, holiday planning, moving houses etc.",
+    "version": "1.0.0",
+    "author": {
+      "name": "Mimi"
+    },
+    "skills": "skills/"
+  }

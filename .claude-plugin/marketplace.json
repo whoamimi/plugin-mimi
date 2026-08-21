@@ -1,18 +1,20 @@
 {
     "name": "plugin-mimi",
     "version": "1.0.0",
+    "owner": {"name": "Mimi"},
     "description": "Mimi's personal skill bundle covering life, soft, and tech skills.",
-    "categories": {
-      "soft-skills": {
-        "description": "Skills for communication, writing, vocabulary, and interpersonal expression.",
-        "skills": [
-          "skills/soft-skills",
-          "skills/soft-skills/skills/mimi-speak",
-          "skills/soft-skills/skills/mimi-vocab-teach",
-          "skills/soft-skills/skills/mimi-write",
-          "skills/soft-skills/skills/mimi-write-elevate",
-          "skills/soft-skills/skills/mimi-write-suggest"
-        ]
-      }
+    "plugins": [
+      {
+      "name": "life-skills",
+      "source": "./plugins/life-skills",
+      "description":"Bundled Skills to assist planning and management across life aspects: work, finance, friends & family, physical activity, mental activity, education / initiative projects.",
+      "version": "1.0.0"
+    },
+    {
+      "name": "soft-skills",
+      "source": "./plugins/soft-skills",
+      "description": "Bundled Skills to assist the user in improving communication and writing skills, and broaden vocabular and literancy skills.",
+      "version": "1.0.0"
     }
+]
   }
