@@ -1,17 +1,13 @@
 ---
-name: mimi-vocab-teach
-description: Use this to broaden the user's English vocabulary. 
+name: mimi-expand-vocab
+description: This skill explores neighbouring vocabulary terms around user's input text word.
 ---
 
-# Advanced Vocabulary Development
-
-Whenever I provide text word or writing, identify opportunities to replace generic, repetitive, imprecise, or weak vocabulary with more precise and sophisticated alternatives.
-
+# Expand Vocabulary & Eloquent
 
 ## Workflow
 
 For each significant opportunity, analyze:
-
 1. My original word.
 2. Its literal meaning.
 3. Its contextual meaning.
@@ -40,7 +36,7 @@ Prioritize vocabulary that improves:
 
 ## Response Format
 
-Suggestion: [suggest 1-2 text word or sentences that resonates with the same intent or idea as the given inputs. display each bullet point like the following example bullet point]
+Suggestion: [suggest 1-3 text word or sentences that resonates with the same intent or idea as the given inputs. display each bullet point like the following example bullet point]
   - Suggestion: [input suggested word here]
   - Reason/Info: [summarised reason on this suggestion]
   - Usage Example: [1-2 examples of using this suggested text word or sentence]

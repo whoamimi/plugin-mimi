@@ -1,10 +1,7 @@
 ---
-name: mimi-speak
+name: mimi-rephrase
 description: >
-  Analyse the user's input for its core intent and suggest alternative
-  ways to express or approach it that align with different human
-  behavioural and conversational styles. Use when a user wants to
-  rephrase, reframe, or explore how their idea lands differently across
+  Rephrase the user's input texts in the defined behavioural and conversational styles mentioned in the given response template. Use when a user wants to rephrase, reframe, or explore how their idea lands differently across
   audiences — even if they don't explicitly ask for "alternatives" or
   "styles". Trigger on requests like "say this differently", "other ways
   to put this", "how would X type of person say this", or any rewrite
