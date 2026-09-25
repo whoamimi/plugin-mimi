@@ -1,5 +1,5 @@
 ---
-name: mimi-rephrase
+name: mimi-paraphrase
 description: >
   Rephrase the user's input texts in the defined behavioural and conversational styles mentioned in the given response template. Use when a user wants to rephrase, reframe, or explore how their idea lands differently across
   audiences — even if they don't explicitly ask for "alternatives" or
@@ -8,19 +8,15 @@ description: >
   task with a social or tonal dimension.
 ---
 
-# Intent Alternatives
-
-Extracts the core intent from the user's input, then generates
-alternatives tailored to distinct human behavioural and conversational
-styles — without changing what the user is trying to achieve.
-
 ## Steps
+
 1. Identify the **core intent** (what the user actually wants to say or do)
 2. Note any **tone signals** already present (formal, casual, assertive, etc.)
 3. Generate alternatives mapped to distinct styles (see below)
 4. Flag which style best matches the user's original voice
 
 ## Behavioural Styles to Cover
+
 - **Direct / Assertive / Formal** — confident, no filler, gets to the point
 - **Casual / Friendly** — conversational, empathetic, people-first
 - **Analytical / Precise** — structured, evidence-led, detail-oriented

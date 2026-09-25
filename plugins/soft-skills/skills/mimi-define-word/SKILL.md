@@ -1,5 +1,5 @@
 ---
-name: mimi-expand-vocab
+name: mimi-define-word
 description: This skill explores neighbouring vocabulary terms around user's input text word.
 ---
 

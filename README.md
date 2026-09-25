@@ -1,6 +1,6 @@
-# plugin-mimi
+# Plug Mimi
 
-Claude Plugin Skill to assist my life.
+Claude Plugin Skill to assist a female's life.
 
 ## Directory Overview
 

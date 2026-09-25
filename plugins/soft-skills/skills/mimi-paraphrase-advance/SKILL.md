@@ -1,5 +1,5 @@
 ---
-name: mimi-write-elevate
+name: mimi-paraphrase-advance
 description: To analyze user's given writing and construct to improve language and argumentation manner. Use this when user wants to explore in depth with their writing.
 
 ---
