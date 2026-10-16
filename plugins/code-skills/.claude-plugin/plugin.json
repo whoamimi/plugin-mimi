@@ -1,0 +1,13 @@
+{
+  "name": "code-skills",
+  "version": "1.0.0",
+  "description": "Mimi's coding skills: pull request preparation and review, built on Anthropic's code-review plugin.",
+  "author": {
+    "name": "Mimi"
+  },
+  "icon": "./assets/icon.png",
+  "keywords": ["code-review", "pull-requests", "github"],
+  "dependencies": [
+    { "name": "code-review", "marketplace": "claude-plugins-official" }
+  ]
+}
