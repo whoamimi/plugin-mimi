@@ -1,0 +1,70 @@
+name: PR check and merge
+
+on:
+  pull_request:
+    branches: [main]
+    types: [opened, synchronize, reopened, ready_for_review]
+
+permissions:
+  contents: read
+
+concurrency:
+  group: pr-${{ github.event.pull_request.number }}
+  cancel-in-progress: true
+
+jobs:
+  check:
+    if: ${{ !github.event.pull_request.draft }}
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - name: Install Claude Code CLI
+        run: npm install -g @anthropic-ai/claude-code@2.1.301
+
+      - name: Validate marketplace and plugins
+        run: |
+          claude plugin validate .
+          for plugin in plugins/*/; do
+            claude plugin validate "$plugin"
+          done
+
+      - name: Check skill frontmatter
+        run: |
+          status=0
+          for file in plugins/*/skills/*/SKILL.md; do
+            folder=$(basename "$(dirname "$file")")
+            name=$(sed -n 's/^name: *//p' "$file" | head -1)
+            if [ "$name" != "$folder" ]; then
+              echo "::error file=$file::name '$name' does not match folder '$folder'"
+              status=1
+            fi
+            if ! grep -q '^description:' "$file"; then
+              echo "::error file=$file::missing description"
+              status=1
+            fi
+          done
+          stray=$(find plugins -mindepth 2 -maxdepth 2 -name SKILL.md)
+          if [ -n "$stray" ]; then
+            echo "::error::SKILL.md must live under skills/<name>/: $stray"
+            status=1
+          fi
+          exit $status
+
+  merge:
+    needs: check
+    # Only auto-merge branches from this repository, not forks.
+    if: ${{ github.event.pull_request.head.repo.full_name == github.repository }}
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      pull-requests: write
+    steps:
+      - name: Merge into main
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: gh pr merge "${{ github.event.pull_request.number }}" --repo "${{ github.repository }}" --merge
