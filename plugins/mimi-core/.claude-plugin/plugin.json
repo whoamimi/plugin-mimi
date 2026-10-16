@@ -4,5 +4,6 @@
   "description": "Mimi's admin & housekeeping tasks for editing, reviewing, checking tech documentations for projects' codebase, progression tracks and general software practices e.g. CI/CD workflows on Github.",
   "author": {
     "name": "Mimi"
-  }
+  },
+  "icon": "./assets/icon.png"
 }

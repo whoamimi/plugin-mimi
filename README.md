@@ -1,3 +1,7 @@
+<p align="center">
+  <img src="assets/logo.png" alt="Happiness Potion logo" width="200">
+</p>
+
 # Plug Mimi
 
 Claude Plugin Skill to assist a female's life.
@@ -14,10 +18,14 @@ Claude Plugin Skill to assist a female's life.
 │       └── pr-check-and-merge.yml
 ├── README.md
 ├── SECURITY.md
+├── assets
+│   └── logo.png
 ├── plugins
 │   ├── craft-skills
 │   │   ├── .claude-plugin
 │   │   │   └── plugin.json
+│   │   ├── assets
+│   │   │   └── icon.png
 │   │   └── skills
 │   │       └── mimi-sprite-studio
 │   │           ├── SKILL.md
@@ -31,6 +39,8 @@ Claude Plugin Skill to assist a female's life.
 │   ├── life-skills
 │   │   ├── .claude-plugin
 │   │   │   └── plugin.json
+│   │   ├── assets
+│   │   │   └── icon.png
 │   │   └── skills
 │   │       ├── check-gmail
 │   │       │   └── SKILL.md
@@ -39,6 +49,8 @@ Claude Plugin Skill to assist a female's life.
 │   ├── mimi-core
 │   │   ├── .claude-plugin
 │   │   │   └── plugin.json
+│   │   ├── assets
+│   │   │   └── icon.png
 │   │   └── skills
 │   │       ├── check-beehive
 │   │       │   └── SKILL.md
@@ -49,6 +61,8 @@ Claude Plugin Skill to assist a female's life.
 │   └── soft-skills
 │       ├── .claude-plugin
 │       │   └── plugin.json
+│       ├── assets
+│       │   └── icon.png
 │       └── skills
 │           ├── mimi-edit
 │           │   └── SKILL.md
