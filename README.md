@@ -88,6 +88,8 @@ claude plugin install code-skills@plugin-mimi
 │       └── skills
 │           ├── mimi-edit
 │           │   └── SKILL.md
+│           ├── mimi-notes-summary
+│           │   └── SKILL.md
 │           ├── mimi-rephrase
 │           │   └── SKILL.md
 │           └── mimi-tutor
