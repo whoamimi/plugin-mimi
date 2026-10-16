@@ -68,3 +68,31 @@ jobs:
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: gh pr merge "${{ github.event.pull_request.number }}" --repo "${{ github.repository }}" --merge
+
+  update-readme:
+    needs: merge
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+
+      - name: Install tree CLI
+        run: sudo apt-get update -qq && sudo apt-get install -y -qq tree
+
+      - name: Regenerate README directory tree
+        run: scripts/update-readme-tree.sh
+
+      - name: Commit and push if changed
+        run: |
+          if git diff --quiet README.md; then
+            echo "README tree already up to date"
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git commit -am "Update README directory tree"
+          git pull --rebase origin main
+          git push origin HEAD:main
