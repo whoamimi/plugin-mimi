@@ -20,6 +20,20 @@ claude plugin marketplace add anthropics/claude-plugins-official
 claude plugin install code-skills@plugin-mimi
 ```
 
+## Checks
+
+Every pull request to `main` runs these checks before it is merged automatically. Run them locally before pushing:
+
+```bash
+claude plugin validate --strict .            # marketplace and manifests
+python3 scripts/lint-plugins.py              # skill authoring best practices
+ruff check --select E9,F .                   # Python syntax and errors
+shellcheck scripts/*.sh                      # shell scripts
+scripts/update-readme-tree.sh                # keep the directory tree current
+```
+
+`scripts/lint-plugins.py` follows Anthropic's [plugin reference](https://code.claude.com/docs/en/plugins-reference) and [skill authoring best practices](https://platform.claude.com/docs/en/agents-and-tools/agent-skills/best-practices): skill names are kebab-case, at most 64 characters, match their folder and avoid reserved words; descriptions are under 1,024 characters with no XML tags and say when to use the skill; SKILL.md bodies stay under 500 lines; references stay one level deep; manifests and marketplace entries agree.
+
 ## Directory Overview
 
 <!-- tree:start -->
@@ -30,6 +44,12 @@ claude plugin install code-skills@plugin-mimi
 ├── .github
 │   └── workflows
 │       └── pr-check-and-merge.yml
+├── .ruff_cache
+│   ├── .gitignore
+│   ├── 0.16.8
+│   │   ├── 15333865445806045830
+│   │   └── 4380396506914443556
+│   └── CACHEDIR.TAG
 ├── README.md
 ├── SECURITY.md
 ├── assets
@@ -95,6 +115,7 @@ claude plugin install code-skills@plugin-mimi
 │           └── mimi-tutor
 │               └── SKILL.md
 └── scripts
+    ├── lint-plugins.py
     └── update-readme-tree.sh
 ```
 <!-- tree:end -->

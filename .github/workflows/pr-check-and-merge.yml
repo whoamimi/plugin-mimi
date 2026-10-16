@@ -26,34 +26,39 @@ jobs:
       - name: Install Claude Code CLI
         run: npm install -g @anthropic-ai/claude-code@2.1.301
 
-      - name: Validate marketplace and plugins
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install lint tools
         run: |
-          claude plugin validate .
+          pip install ruff==0.16.8
+          sudo apt-get update -qq && sudo apt-get install -y -qq shellcheck tree
+
+      - name: Validate marketplace and plugins (strict)
+        run: |
+          claude plugin validate --strict .
           for plugin in plugins/*/; do
-            claude plugin validate "$plugin"
+            claude plugin validate --strict "$plugin"
           done
 
-      - name: Check skill frontmatter
+      - name: Lint skills against authoring best practices
+        run: python3 scripts/lint-plugins.py
+
+      - name: Lint Python scripts
+        run: ruff check --select E9,F .
+
+      - name: Lint shell scripts
+        run: shellcheck scripts/*.sh
+
+      - name: Check README directory tree is current
         run: |
-          status=0
-          for file in plugins/*/skills/*/SKILL.md; do
-            folder=$(basename "$(dirname "$file")")
-            name=$(sed -n 's/^name: *//p' "$file" | head -1)
-            if [ "$name" != "$folder" ]; then
-              echo "::error file=$file::name '$name' does not match folder '$folder'"
-              status=1
-            fi
-            if ! grep -q '^description:' "$file"; then
-              echo "::error file=$file::missing description"
-              status=1
-            fi
-          done
-          stray=$(find plugins -mindepth 2 -maxdepth 2 -name SKILL.md)
-          if [ -n "$stray" ]; then
-            echo "::error::SKILL.md must live under skills/<name>/: $stray"
-            status=1
+          scripts/update-readme-tree.sh
+          if ! git diff --quiet README.md; then
+            echo "::error file=README.md::Directory tree is out of date. Run scripts/update-readme-tree.sh and commit."
+            git diff README.md
+            exit 1
           fi
-          exit $status
 
   merge:
     needs: check
