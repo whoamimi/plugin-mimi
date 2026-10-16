@@ -1,8 +1,9 @@
 {
   "name": "craft-skills",
   "version": "1.0.0",
-  "description": "Mimi's creative craft skills bundle, starting with sprite and pixel-art creation.",
+  "description": "Mimi's creative craft skills bundle: background removal, sprite-sheet cutting, animated stickers and glowing mascot profile pictures.",
   "author": {
     "name": "Mimi"
-  }
+  },
+  "keywords": ["sprites", "stickers", "background-removal", "animation", "discord", "mascot"]
 }

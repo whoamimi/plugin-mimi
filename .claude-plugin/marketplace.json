@@ -27,7 +27,7 @@
     {
       "name": "craft-skills",
       "source": "./plugins/craft-skills",
-      "description": "Bundled Skills for creative crafts, starting with sprite and pixel-art creation.",
+      "description": "Bundled Skills for creative crafts: background removal, sprite cutting, animated stickers and glowing mascot PFPs.",
       "version": "1.0.0"
     }
   ]
