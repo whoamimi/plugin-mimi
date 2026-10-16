@@ -15,6 +15,19 @@ Claude Plugin Skill to assist a female's life.
 ├── README.md
 ├── SECURITY.md
 ├── plugins
+│   ├── craft-skills
+│   │   ├── .claude-plugin
+│   │   │   └── plugin.json
+│   │   └── skills
+│   │       └── mimi-sprite-studio
+│   │           ├── SKILL.md
+│   │           ├── references
+│   │           │   ├── layered-animation.md
+│   │           │   └── mascot-styles.md
+│   │           └── scripts
+│   │               ├── animate.py
+│   │               ├── cutout.py
+│   │               └── render_svg.py
 │   ├── life-skills
 │   │   ├── .claude-plugin
 │   │   │   └── plugin.json

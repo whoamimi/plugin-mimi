@@ -23,6 +23,12 @@
       "source": "./plugins/mimi-core",
       "description": "Mimi's admin & housekeeping tasks for editing, reviewing, checking tech documentations for projects' codebase, progression tracks and general software practices e.g. CI/CD workflows on Github.",
       "version": "1.0.0"
+    },
+    {
+      "name": "craft-skills",
+      "source": "./plugins/craft-skills",
+      "description": "Bundled Skills for creative crafts: background removal, sprite cutting, animated stickers and glowing mascot PFPs.",
+      "version": "1.0.0"
     }
   ]
 }
