@@ -33,12 +33,10 @@ Claude Plugin Skill to assist a female's life.
         ├── .claude-plugin
         │   └── plugin.json
         └── skills
-            ├── mimi-define-word
+            ├── mimi-edit
             │   └── SKILL.md
-            ├── mimi-english-tutor
+            ├── mimi-rephrase
             │   └── SKILL.md
-            ├── mimi-paraphrase
-            │   └── SKILL.md
-            └── mimi-paraphrase-advance
+            └── mimi-tutor
                 └── SKILL.md
 ```
