@@ -5,6 +5,9 @@
     "name": "Mimi"
   },
   "description": "Mimi's personal skill bundle covering life, soft, and tech skills.",
+  "allowCrossMarketplaceDependenciesOn": [
+    "claude-plugins-official"
+  ],
   "plugins": [
     {
       "name": "life-skills",
@@ -28,6 +31,12 @@
       "name": "craft-skills",
       "source": "./plugins/craft-skills",
       "description": "Bundled Skills for creative crafts: background removal, sprite cutting, animated stickers and glowing mascot PFPs.",
+      "version": "1.0.0"
+    },
+    {
+      "name": "code-skills",
+      "source": "./plugins/code-skills",
+      "description": "Bundled Skills for coding: pull request preparation and review, with Anthropic's code-review plugin as a dependency.",
       "version": "1.0.0"
     }
   ]

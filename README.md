@@ -6,6 +6,20 @@
 
 Claude Plugin Skill to assist a female's life.
 
+## Installation
+
+```bash
+claude plugin marketplace add whoamimi/plugin-mimi
+claude plugin install <plugin-name>@plugin-mimi
+```
+
+`code-skills` depends on Anthropic's `code-review` plugin. Add Anthropic's marketplace once before installing it, so the dependency can be installed automatically:
+
+```bash
+claude plugin marketplace add anthropics/claude-plugins-official
+claude plugin install code-skills@plugin-mimi
+```
+
 ## Directory Overview
 
 <!-- tree:start -->
@@ -21,6 +35,14 @@ Claude Plugin Skill to assist a female's life.
 ├── assets
 │   └── logo.png
 ├── plugins
+│   ├── code-skills
+│   │   ├── .claude-plugin
+│   │   │   └── plugin.json
+│   │   ├── assets
+│   │   │   └── icon.png
+│   │   └── skills
+│   │       └── mimi-pr-review
+│   │           └── SKILL.md
 │   ├── craft-skills
 │   │   ├── .claude-plugin
 │   │   │   └── plugin.json
