@@ -5,5 +5,13 @@
   "author": {
     "name": "Mimi"
   },
-  "keywords": ["sprites", "stickers", "background-removal", "animation", "discord", "mascot"]
+  "icon": "./assets/icon.png",
+  "keywords": [
+    "sprites",
+    "stickers",
+    "background-removal",
+    "animation",
+    "discord",
+    "mascot"
+  ]
 }

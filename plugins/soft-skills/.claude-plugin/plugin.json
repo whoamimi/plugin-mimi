@@ -4,5 +4,6 @@
   "description": "Mimi's soft skills bundle to assist user's life in communicating and articulating thoughts to others.",
   "author": {
     "name": "Mimi"
-  }
+  },
+  "icon": "./assets/icon.png"
 }

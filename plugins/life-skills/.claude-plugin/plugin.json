@@ -4,5 +4,6 @@
   "description": "Bundled skills to assist user's life in managing balance of adult life responsibilities e.g. emails, self-care, life balance, life management tools, seeking opportunities, paying bills, holiday planning, moving houses etc.",
   "author": {
     "name": "Mimi"
-  }
+  },
+  "icon": "./assets/icon.png"
 }
