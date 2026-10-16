@@ -7,35 +7,38 @@ Claude Plugin Skill to assist a female's life.
 ```text
 .
 ├── README.md
+├── SECURITY.md
 ├── .claude-plugin
-├── ├── .marketplace.json
-└── skills
+│   └── marketplace.json
+└── plugins
     ├── life-skills
-    │   ├── SKILL.md
     │   ├── .claude-plugin
-    │   └── ├── plugin.json
-    ├── soft-skills
-    │   ├── SKILL.md
-    │   ├── .claude-plugin
-    │   ├── ├── plugin.json
+    │   │   └── plugin.json
     │   └── skills
-    │       ├── mimi-speak
+    │       ├── check-gmail
     │       │   └── SKILL.md
-    │       ├── mimi-vocab-teach
-    │       │   └── SKILL.md
-    │       ├── mimi-write
-    │       │   └── SKILL.md
-    │       ├── mimi-write-elevate
-    │       │   └── SKILL.md
-    │       └── mimi-write-suggest
+    │       └── mimi-cbt
     │           └── SKILL.md
-    └── tech-skills
-        ├── SKILL.md
+    ├── mimi-core
+    │   ├── .claude-plugin
+    │   │   └── plugin.json
+    │   └── skills
+    │       ├── check-beehive
+    │       │   └── SKILL.md
+    │       ├── mimi-world
+    │       │   └── SKILL.md
+    │       └── write-readme
+    │           └── SKILL.md
+    └── soft-skills
         ├── .claude-plugin
-        ├── ├── plugin.json
+        │   └── plugin.json
         └── skills
-            ├── mimi-doc
+            ├── mimi-define-word
             │   └── SKILL.md
-            └── mimi-start
+            ├── mimi-english-tutor
+            │   └── SKILL.md
+            ├── mimi-paraphrase
+            │   └── SKILL.md
+            └── mimi-paraphrase-advance
                 └── SKILL.md
 ```

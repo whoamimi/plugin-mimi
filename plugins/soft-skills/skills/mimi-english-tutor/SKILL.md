@@ -1,5 +1,5 @@
 ---
-name: mimi-write
+name: mimi-english-tutor
 description: Advanced English writing editor for grammar, mechanics, sentence structure, vocabulary, naturalness, comprehension, and stylistic refinement.
 ---
 
