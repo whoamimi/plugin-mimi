@@ -17,7 +17,7 @@ tree_file=$(mktemp)
 trap 'rm -f "$tree_file"' EXIT
 {
   echo '```text'
-  LC_ALL=C tree -a --noreport --charset=utf-8 -I '.git'
+  LC_ALL=C tree -a --gitignore --noreport --charset=utf-8 -I '.git'
   echo '```'
 } > "$tree_file"
 

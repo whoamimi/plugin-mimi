@@ -44,12 +44,7 @@ scripts/update-readme-tree.sh                # keep the directory tree current
 ├── .github
 │   └── workflows
 │       └── pr-check-and-merge.yml
-├── .ruff_cache
-│   ├── .gitignore
-│   ├── 0.16.8
-│   │   ├── 15333865445806045830
-│   │   └── 4380396506914443556
-│   └── CACHEDIR.TAG
+├── .gitignore
 ├── README.md
 ├── SECURITY.md
 ├── assets

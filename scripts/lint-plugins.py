@@ -11,6 +11,7 @@ Exits 1 when any error is found. Warnings are printed but do not fail.
 """
 import json
 import re
+import subprocess
 import sys
 from pathlib import Path
 
@@ -29,6 +30,7 @@ FIRST_OR_SECOND_PERSON = re.compile(r"^\s*(I|I'm|I can|I will|You|You can|We)\b"
 FENCED_BLOCK = re.compile(r"^```.*?^```", re.S | re.M)
 MD_LINK = re.compile(r"\]\(([^)#\s]+)(?:#[^)]*)?\)")
 JUNK_FILES = (".DS_Store", "Thumbs.db")
+JUNK_DIRS = ("__pycache__", ".ruff_cache", ".pytest_cache")
 
 errors, warnings = [], []
 
@@ -43,6 +45,15 @@ def error(path, msg):
 
 def warn(path, msg):
     warnings.append(f"{rel(path)}: {msg}")
+
+
+def tracked_files():
+    """Files tracked by git, so ignored local caches are not reported."""
+    try:
+        out = subprocess.run(["git", "ls-files"], cwd=ROOT, capture_output=True, text=True, check=True)
+    except (OSError, subprocess.CalledProcessError):
+        return [p.relative_to(ROOT).as_posix() for p in ROOT.rglob("*") if p.is_file() and ".git" not in p.parts]
+    return out.stdout.splitlines()
 
 
 def load_json(path):
@@ -193,11 +204,10 @@ def main():
         if plugin_dir.is_dir() and plugin_dir.resolve() not in listed:
             error(plugin_dir, "plugin is not listed in marketplace.json")
 
-    for junk in ROOT.rglob("*"):
-        if ".git" in junk.parts:
-            continue
-        if junk.name in JUNK_FILES or junk.name == "__pycache__":
-            error(junk, "remove generated or OS junk file")
+    for tracked in tracked_files():
+        parts = Path(tracked).parts
+        if parts[-1] in JUNK_FILES or any(part in JUNK_DIRS for part in parts):
+            error(ROOT / tracked, "generated or OS junk file is committed; remove it and add it to .gitignore")
 
     return finish()
 
