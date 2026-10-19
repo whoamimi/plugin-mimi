@@ -1,6 +1,6 @@
 ---
 name: "depth-breakdown"
-description: "Break a project idea, or an existing list of steps, into nested subtasks to a chosen depth (integer 1-5), shown as a Mermaid flowchart with small, buildable leaves and suggested open-source tools for each."
+description: Breaks a project idea, or an existing list of steps, into nested subtasks to a chosen depth (1-5), drawn as a Mermaid flowchart whose smallest tasks can each be built in one sitting, with open-source tools suggested for each. Use when the user wants to plan or scope a project, split a big task into steps, or turn a rough plan into buildable pieces. Examples include "break this idea down to depth 3", "how would I build a habit-tracker app?", "split these steps into subtasks" and "turn my plan into a flowchart".
 ---
 
 # Depth Breakdown

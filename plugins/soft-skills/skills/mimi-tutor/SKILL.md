@@ -1,6 +1,6 @@
 ---
 name: mimi-tutor
-description: Teach the user English vocabulary, grammar and usage — explore a word's meaning, nuance, stronger alternatives, collocations and etymology; explain a grammar or usage rule; set short practice exercises; and track recurring words and mistakes to practise. Use for "what does X mean", "a better word for X", "define X", "difference between X and Y", "why is this wrong", "teach me", "quiz me", or any request to build vocabulary or understand a rule.
+description: Teaches the user English vocabulary, grammar and usage — explores a word's meaning, nuance, alternatives and etymology, explains rules with examples, sets short practice exercises and tracks recurring mistakes. Use when the user wants to understand or learn a word or rule rather than just get a correction. Examples include "what does ubiquitous mean?", "a better word for good", "difference between affect and effect", "why is this sentence wrong?" and "quiz me on prepositions".
 ---
 
 # English Tutor

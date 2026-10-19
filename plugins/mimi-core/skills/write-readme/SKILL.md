@@ -1,6 +1,6 @@
 ---
 name: write-readme
-description: Writes or updates a project's README.md to match a fixed template with badges, highlights, directory overview, system architecture and dev notes. Use when the user asks to write, rewrite, update or tidy a repository's README, or to document a project for GitHub.
+description: Writes or updates a project's README.md to match a fixed template with badges, highlights, directory overview, system architecture and dev notes. Use when the user asks to write, rewrite, update or tidy a repository's README, or to document a project for GitHub. Examples include "write a README for this repo", "update my README to the usual template", "document this project" and "my README is out of date".
 ---
 
 Prior to performing task, check that the github repository is attached to this chat, otherwise, prompt the user to attach repository. 

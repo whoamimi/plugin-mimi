@@ -1,6 +1,6 @@
 ---
 name: "get-astro-today"
-description: "Report daily influences based on current day's insights for Vedic, Western and Lunar Astrology."
+description: Reports today's influences from Vedic, Western and Lunar astrology for the user, each as a short table with one or two personal impacts and a fitting philosophical quote. Use when the user asks about today's astrology, horoscope, moon phase or planetary influences, or wants a reflective theme or quote for the day. Examples include "what's my astro today?", "daily horoscope", "what does the moon mean for me today?" and "give me today's lesson and quote".
 ---
 
 Suggest a quote to overcome lessons expected to fulfill today based on the current day's insights across Vedic, Western and Lunar astrology.  Return your response in the following format.

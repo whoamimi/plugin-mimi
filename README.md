@@ -32,7 +32,7 @@ shellcheck scripts/*.sh                      # shell scripts
 scripts/update-readme-tree.sh                # keep the directory tree current
 ```
 
-`scripts/lint-plugins.py` follows Anthropic's [plugin reference](https://code.claude.com/docs/en/plugins-reference) and [skill authoring best practices](https://platform.claude.com/docs/en/agents-and-tools/agent-skills/best-practices): skill names are kebab-case, at most 64 characters, match their folder and avoid reserved words; descriptions are under 1,024 characters with no XML tags and say when to use the skill; SKILL.md bodies stay under 500 lines; references stay one level deep; manifests and marketplace entries agree.
+`scripts/lint-plugins.py` follows Anthropic's [plugin reference](https://code.claude.com/docs/en/plugins-reference) and [skill authoring best practices](https://platform.claude.com/docs/en/agents-and-tools/agent-skills/best-practices): skill names are kebab-case, at most 64 characters, match their folder and avoid reserved words; descriptions are under 1,024 characters with no XML tags, say when to use the skill and quote example requests; SKILL.md bodies stay under 500 lines; references stay one level deep; manifests and marketplace entries agree.
 
 ## Directory Overview
 

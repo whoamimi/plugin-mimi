@@ -1,6 +1,6 @@
 ---
 name: mimi-sprite-studio
-description: Turn images into game-ready or chat-ready art. Remove flat backgrounds (white, black/glow, or same-colour-as-subject), snip a sprite sheet into individual transparent PNGs, animate sprites into looping stickers (WebP/GIF/APNG), and draw glowing chubby mascot profile pictures (Discord circle-safe SVG/PNG). Use when the user shares an image and says "remove the background", "cut/snip/slice sprites", "make this a sticker", "animate this", "transform into animated stickers", "make a Discord/bot profile picture or mascot", or asks for sprites from a sheet.
+description: Turns images into game-ready or chat-ready art — removes flat backgrounds, cuts sprite sheets into transparent PNGs, animates sprites into looping stickers (WebP, GIF, APNG) and draws glowing mascot profile pictures that stay inside Discord's circle crop. Use when the user shares an image and wants it cut out, sliced, animated or turned into a sticker, mascot or profile picture. Examples include "remove the background", "cut these sprites out", "make this an animated sticker" and "design a Discord bot avatar".
 ---
 
 # Mimi Sprite Studio
