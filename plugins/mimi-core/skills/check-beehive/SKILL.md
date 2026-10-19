@@ -1,6 +1,6 @@
 ---
 name: check-beehive
-description: Defines checklist to execute to report status (active/inactive/error) of Mimi's home network name 'beehive'.
+description: Runs a status checklist (active / inactive / error) for Mimi's home network 'beehive' — the iMac local tunnel, Windows PC remote access, and home devices such as lights, cameras, doors and the washing machine. Use when the user asks to check beehive, the home network, home devices or remote access, or asks whether something at home is online.
 ---
 
 ## Steps

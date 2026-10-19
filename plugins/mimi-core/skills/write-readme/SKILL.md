@@ -1,6 +1,6 @@
 ---
 name: write-readme
-description: Write project's README.md file aligning with the template layout and rules defined in this skill file. this skill. 
+description: Writes or updates a project's README.md to match a fixed template with badges, highlights, directory overview, system architecture and dev notes. Use when the user asks to write, rewrite, update or tidy a repository's README, or to document a project for GitHub.
 ---
 
 Prior to performing task, check that the github repository is attached to this chat, otherwise, prompt the user to attach repository. 
