@@ -56,6 +56,8 @@ scripts/update-readme-tree.sh                # keep the directory tree current
 │   │   ├── assets
 │   │   │   └── icon.png
 │   │   └── skills
+│   │       ├── depth-breakdown
+│   │       │   └── SKILL.md
 │   │       └── mimi-pr-review
 │   │           └── SKILL.md
 │   ├── craft-skills
@@ -64,15 +66,27 @@ scripts/update-readme-tree.sh                # keep the directory tree current
 │   │   ├── assets
 │   │   │   └── icon.png
 │   │   └── skills
-│   │       └── mimi-sprite-studio
+│   │       ├── get-astro-today
+│   │       │   └── SKILL.md
+│   │       ├── mimi-sprite-studio
+│   │       │   ├── SKILL.md
+│   │       │   ├── references
+│   │       │   │   ├── layered-animation.md
+│   │       │   │   └── mascot-styles.md
+│   │       │   └── scripts
+│   │       │       ├── animate.py
+│   │       │       ├── cutout.py
+│   │       │       └── render_svg.py
+│   │       └── run-tarot-reading
 │   │           ├── SKILL.md
+│   │           ├── assets
+│   │           │   ├── card_picker.html
+│   │           │   └── deck.json
 │   │           ├── references
-│   │           │   ├── layered-animation.md
-│   │           │   └── mascot-styles.md
+│   │           │   ├── reading-craft.md
+│   │           │   └── spreads.md
 │   │           └── scripts
-│   │               ├── animate.py
-│   │               ├── cutout.py
-│   │               └── render_svg.py
+│   │               └── tarot.py
 │   ├── life-skills
 │   │   ├── .claude-plugin
 │   │   │   └── plugin.json
@@ -80,6 +94,8 @@ scripts/update-readme-tree.sh                # keep the directory tree current
 │   │   │   └── icon.png
 │   │   └── skills
 │   │       ├── check-gmail
+│   │       │   └── SKILL.md
+│   │       ├── daily-decision-maker
 │   │       │   └── SKILL.md
 │   │       └── mimi-cbt
 │   │           └── SKILL.md
@@ -89,6 +105,8 @@ scripts/update-readme-tree.sh                # keep the directory tree current
 │   │   ├── assets
 │   │   │   └── icon.png
 │   │   └── skills
+│   │       ├── audit-mimis-imac
+│   │       │   └── SKILL.md
 │   │       ├── check-beehive
 │   │       │   └── SKILL.md
 │   │       ├── mimi-world
