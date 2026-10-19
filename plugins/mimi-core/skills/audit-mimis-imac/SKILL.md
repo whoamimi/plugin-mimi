@@ -1,6 +1,6 @@
 ---
 name: "audit-mimis-imac"
-description: "Install (or verify) and run the core macOS security audit toolchain — Lynis, rkhunter, chkrootkit, osquery, and nmap — then parse their output logs into a single summary report table. Use this skill whenever the user asks to audit their Mac for security issues, check for hacking indicators, scan for rootkits, review their attack surface, or run a \"security check,\" \"system audit,\" or \"cybersecurity footprint\" review."
+description: Installs or verifies and runs a macOS security audit toolchain (Lynis, rkhunter, chkrootkit, osquery and nmap) on the user's iMac, then summarises the logs into one status table with a plain-language verdict. Use when the user wants to check their Mac for security issues, hacking indicators, rootkits, suspicious startup items or open ports. Examples include "audit my Mac", "has my iMac been hacked?", "scan for rootkits", "what ports are open on my machine?" and "run my monthly security check".
 ---
 
 # MacOS Security Audit (Imac M1)

@@ -1,6 +1,6 @@
 ---
 name: mimi-notes-summary
-description: Turn rough notes, a recorded or narrated conversation, or an assigned task into a tidy one-page summary in a fixed four-section format (Decisions, Open questions, Action items, Dates). Use when the user pastes meeting notes, a call recap, a transcript, standup notes or a task brief and asks to "summarise", "tidy up", "write up", "recap", or "turn these notes into a summary".
+description: Turns rough notes, a recorded or narrated conversation, or an assigned task into a tidy one-page summary with four fixed sections (Decisions, Open questions, Action items, Dates), giving every action item an owner and due date or TBD. Use when the user pastes meeting notes, a call recap, a transcript, standup notes or a task brief and wants it tidied up. Examples include "summarise these meeting notes", "write up my call with Sarah", "recap this transcript" and "turn these notes into action items".
 ---
 
 # Notes to Summary

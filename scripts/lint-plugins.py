@@ -146,6 +146,8 @@ def check_skill(skill_md):
             warn(skill_md, "description should be written in the third person")
         if not re.search(r"\buse (when|for|this|whenever)\b", description, re.I):
             warn(skill_md, "description should say when to use the skill ('Use when ...')")
+        if not re.search(r'"[^"]+"', description):
+            warn(skill_md, 'description should quote one or more example requests, e.g. Examples include "..."')
 
     if len(body) > BODY_MAX_LINES:
         error(skill_md, f"body is {len(body)} lines (keep it under {BODY_MAX_LINES})")

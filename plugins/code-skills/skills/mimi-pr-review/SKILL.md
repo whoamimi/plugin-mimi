@@ -1,6 +1,6 @@
 ---
 name: mimi-pr-review
-description: Prepare and review a GitHub pull request end to end — check the branch is ready, run Anthropic's multi-agent code review, then summarise and fix the findings. Use when the user asks to "review my PR", "check this branch before I merge", "is this PR ready", or wants a pre-merge review of their changes.
+description: Prepares and reviews a GitHub pull request end to end — checks the branch is ready, runs Anthropic's multi-agent code review, then summarises findings by severity and fixes them on request. Use when the user wants a pre-merge review of their own changes or asks whether a branch or pull request is ready. Examples include "review my PR", "check this branch before I merge", "is this PR ready?" and "run a code review on my changes".
 ---
 
 # PR Review

@@ -1,6 +1,6 @@
 ---
 name: "run-tarot-reading"
-description: "Run an interactive tarot reading where the querent personally picks their cards from a shuffled 78-card deck, then get a woven three-card interpretation. Use this skill whenever someone mentions tarot, asks to pull or draw cards, wants a card reading or spread, says 'read my cards', 'what do the cards say', 'give me a three-card spread', 'do a daily pull', or asks an open reflective question in a divination-flavoured way — even if they never say the word 'tarot'. Also use it for single-card daily draws, clarifier cards, and larger spreads."
+description: Runs an interactive tarot reading in which the user picks their own cards from a shuffled 78-card deck, then gives a woven interpretation, for three-card spreads, single daily pulls, clarifiers and larger spreads. Use when the user mentions tarot, asks to draw or pull cards, or asks an open reflective question in a divination-flavoured way, even without saying "tarot". Examples include "read my cards", "do a daily pull", "give me a three-card spread about work" and "what do the cards say about this decision?".
 ---
 
 # Tarot card draw

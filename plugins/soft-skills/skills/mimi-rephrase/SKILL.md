@@ -1,6 +1,6 @@
 ---
 name: mimi-rephrase
-description: Guide the user on how to say or write the same idea in different tones, registers and for different audiences, in writing or out loud (meetings, conversations, presentations, difficult conversations). Use for requests like "say this differently", "other ways to put this", "how do I tell X", "make this more formal / casual / diplomatic", "how would I say this out loud", or any rewrite with a social or tonal dimension.
+description: Shows the user how to say or write the same idea in different tones and for different audiences, in writing or out loud, and recommends the best fit with delivery tips for spoken situations. Use when the user wants alternative wording, a different tone, or help saying something to a particular person. Examples include "say this differently", "make this more diplomatic", "how do I tell my manager I'm overloaded?" and "how would I say this in a meeting?".
 ---
 
 # Tone & Delivery Guide
