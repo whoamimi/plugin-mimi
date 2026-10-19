@@ -1,4 +1,4 @@
 ---
 name: mimi-world
-description: Contains brief on the user's directory management, home gadgets and personal projects across computer science like REST FastAPI, MCP Servers, Machine Learning, custom Pytorch model, and Kaggle Hackathons. 
+description: Provides background on the user's directory organisation, home gadgets and personal computer-science projects, such as REST FastAPI services, MCP servers, machine learning, custom PyTorch models and Kaggle hackathons. Use when a task needs context about the user's own projects, devices or file layout, or when the user refers to "my projects", "my setup" or "my world".
 ---

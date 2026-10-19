@@ -84,6 +84,20 @@ def parse_frontmatter(path):
     return fields, lines[end + 1:]
 
 
+def raw_scalar_breaks_yaml(path):
+    """A plain (unquoted) YAML value cannot contain ': ' or ' #'."""
+    for line in path.read_text().splitlines()[1:]:
+        if line.strip() == "---":
+            return False
+        match = re.match(r"^description:\s*(.*)$", line)
+        if match:
+            value = match.group(1)
+            if value[:1] in ("'", '"', ">", "|"):
+                return False
+            return ": " in value or " #" in value
+    return False
+
+
 def check_local_links(path, text, allow_md_links):
     text = FENCED_BLOCK.sub("", text)  # templates and examples inside code fences are not real links
     for target in MD_LINK.findall(text):
@@ -124,6 +138,8 @@ def check_skill(skill_md):
     else:
         if len(description) > DESCRIPTION_MAX:
             error(skill_md, f"description is {len(description)} characters (max {DESCRIPTION_MAX})")
+        if raw_scalar_breaks_yaml(skill_md):
+            error(skill_md, "unquoted description contains ': ' or ' #', which breaks YAML; quote it or reword")
         if XML_TAG.search(description):
             error(skill_md, "description contains an XML tag")
         if FIRST_OR_SECOND_PERSON.match(description):
