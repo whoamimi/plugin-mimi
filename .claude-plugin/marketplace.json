@@ -30,13 +30,13 @@
     {
       "name": "craft-skills",
       "source": "./plugins/craft-skills",
-      "description": "Bundled Skills for creative crafts: background removal, sprite cutting, animated stickers and glowing mascot PFPs.",
+      "description": "Bundled Skills for creative and reflective crafts: sprite cutting, animated stickers, mascot PFPs, daily astrology and tarot readings.",
       "version": "1.0.0"
     },
     {
       "name": "code-skills",
       "source": "./plugins/code-skills",
-      "description": "Bundled Skills for coding: pull request preparation and review, with Anthropic's code-review plugin as a dependency.",
+      "description": "Bundled Skills for coding: project breakdown into buildable subtasks, and pull request review with Anthropic's code-review plugin as a dependency.",
       "version": "1.0.0"
     }
   ]

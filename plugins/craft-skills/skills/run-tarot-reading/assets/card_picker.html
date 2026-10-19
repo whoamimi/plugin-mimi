@@ -1,0 +1,54 @@
+<h2 class="sr-only">A face-down tarot deck of 78 cards. Select three to have them turned over.</h2>
+<div style="padding: 1rem 0;">
+  <div style="display: flex; align-items: baseline; justify-content: space-between; margin-bottom: 12px;">
+    <span style="font-size: 14px; color: var(--text-secondary);">SPREAD_LABEL</span>
+    <span style="font-size: 14px; font-weight: 500;" id="tarot-count">0 of 3 chosen</span>
+  </div>
+  <div id="tarot-grid" style="display: grid; grid-template-columns: repeat(13, minmax(0, 1fr)); gap: 6px;"></div>
+  <div style="display: flex; align-items: center; gap: 12px; margin-top: 1rem;">
+    <button id="tarot-go" style="opacity: 0.5;">Turn them over <span aria-hidden="true">&#8599;</span></button>
+    <button id="tarot-clear">Clear</button>
+    <span style="font-size: 13px; color: var(--text-muted);">Breathe, hold your question, then choose.</span>
+  </div>
+</div>
+<script>
+(function () {
+  var picks = [];
+  var grid = document.getElementById('tarot-grid');
+  var out = document.getElementById('tarot-count');
+  var go = document.getElementById('tarot-go');
+  function paint(el, on) {
+    el.style.background = on ? 'var(--bg-accent)' : 'var(--surface-1)';
+    el.style.border = on ? '2px solid var(--border-accent)' : '0.5px solid var(--border)';
+    el.style.color = on ? 'var(--text-accent)' : 'var(--text-muted)';
+  }
+  function sync() {
+    out.textContent = picks.length + ' of 3 chosen';
+    go.style.opacity = picks.length === 3 ? '1' : '0.5';
+  }
+  for (var i = 1; i <= 78; i++) {
+    var c = document.createElement('button');
+    c.textContent = i;
+    c.setAttribute('aria-label', 'Card ' + i + ', face down');
+    c.style.cssText = 'height:44px;font-size:11px;border-radius:var(--radius);padding:0;cursor:pointer;';
+    paint(c, false);
+    (function (el, n) {
+      el.addEventListener('click', function () {
+        var at = picks.indexOf(n);
+        if (at > -1) { picks.splice(at, 1); paint(el, false); }
+        else if (picks.length < 3) { picks.push(n); paint(el, true); }
+        sync();
+      });
+    })(c, i);
+    grid.appendChild(c);
+  }
+  go.addEventListener('click', function () {
+    if (picks.length === 3) sendPrompt('I drew cards ' + picks.join(', ') + '. Turn them over and read them for me.');
+  });
+  document.getElementById('tarot-clear').addEventListener('click', function () {
+    picks = [];
+    Array.prototype.forEach.call(grid.children, function (el) { paint(el, false); });
+    sync();
+  });
+})();
+</script>
