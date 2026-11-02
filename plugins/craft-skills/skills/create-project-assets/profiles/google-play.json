@@ -1,0 +1,79 @@
+{
+  "name": "google-play",
+  "title": "Google Play store listing",
+  "sources": [
+    "https://support.google.com/googleplay/android-developer/answer/9866151 (graphic assets)",
+    "https://support.google.com/googleplay/android-developer/answer/1078870 (app icon)"
+  ],
+  "assets": [
+    {
+      "id": "app-icon",
+      "description": "Store listing app icon",
+      "required": true,
+      "confirmed": true,
+      "globs": ["icon.png"],
+      "count": {"min": 1, "max": 1},
+      "formats": ["png"],
+      "width": 512,
+      "height": 512,
+      "alpha": "required",
+      "max_kb": 1024,
+      "animated": false
+    },
+    {
+      "id": "feature-graphic",
+      "description": "Feature graphic",
+      "required": true,
+      "confirmed": true,
+      "globs": ["feature_graphic.png", "feature_graphic.jpg", "feature_graphic.jpeg"],
+      "count": {"min": 1, "max": 1},
+      "formats": ["png", "jpeg"],
+      "width": 1024,
+      "height": 500,
+      "alpha": "forbidden",
+      "animated": false
+    },
+    {
+      "id": "phone-screenshots",
+      "description": "Phone screenshots",
+      "required": true,
+      "confirmed": false,
+      "globs": ["screenshots/phone/*.png", "screenshots/phone/*.jpg", "screenshots/phone/*.jpeg"],
+      "count": {"min": 2, "max": 8},
+      "formats": ["png", "jpeg"],
+      "min_side": 320,
+      "max_side": 3840,
+      "max_ratio": 2,
+      "alpha": "forbidden",
+      "animated": false
+    },
+    {
+      "id": "tablet7-screenshots",
+      "description": "7-inch tablet screenshots",
+      "required": false,
+      "confirmed": false,
+      "globs": ["screenshots/tablet7/*.png", "screenshots/tablet7/*.jpg", "screenshots/tablet7/*.jpeg"],
+      "count": {"min": 0, "max": 8},
+      "formats": ["png", "jpeg"],
+      "min_side": 320,
+      "max_side": 3840,
+      "max_ratio": 2,
+      "alpha": "forbidden",
+      "animated": false
+    },
+    {
+      "id": "tablet10-screenshots",
+      "description": "10-inch tablet screenshots",
+      "required": false,
+      "confirmed": false,
+      "globs": ["screenshots/tablet10/*.png", "screenshots/tablet10/*.jpg", "screenshots/tablet10/*.jpeg"],
+      "count": {"min": 0, "max": 8},
+      "formats": ["png", "jpeg"],
+      "min_side": 320,
+      "max_side": 3840,
+      "max_ratio": 2,
+      "alpha": "forbidden",
+      "animated": false
+    }
+  ]
+}

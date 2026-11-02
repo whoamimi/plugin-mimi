@@ -56,7 +56,11 @@ scripts/update-readme-tree.sh                # keep the directory tree current
 │   │   ├── assets
 │   │   │   └── icon.png
 │   │   └── skills
+│   │       ├── backup-project
+│   │       │   └── SKILL.md
 │   │       ├── depth-breakdown
+│   │       │   └── SKILL.md
+│   │       ├── get-started
 │   │       │   └── SKILL.md
 │   │       └── mimi-pr-review
 │   │           └── SKILL.md
@@ -66,6 +70,42 @@ scripts/update-readme-tree.sh                # keep the directory tree current
 │   │   ├── assets
 │   │   │   └── icon.png
 │   │   └── skills
+│   │       ├── create-project-assets
+│   │       │   ├── SKILL.md
+│   │       │   ├── examples
+│   │       │   │   └── discord-cozy-grove
+│   │       │   │       ├── cozy_grove
+│   │       │   │       │   ├── README.md
+│   │       │   │       │   ├── __init__.py
+│   │       │   │       │   ├── __main__.py
+│   │       │   │       │   ├── assets
+│   │       │   │       │   │   ├── banner_event.gif
+│   │       │   │       │   │   ├── banner_news.gif
+│   │       │   │       │   │   ├── banner_rules.gif
+│   │       │   │       │   │   ├── banner_welcome.gif
+│   │       │   │       │   │   ├── cat_idle.gif
+│   │       │   │       │   │   ├── divider.gif
+│   │       │   │       │   │   ├── emoji_cozy_cat.gif
+│   │       │   │       │   │   ├── emoji_cozy_cat.png
+│   │       │   │       │   │   ├── emoji_mushroom.png
+│   │       │   │       │   │   ├── emoji_orange.png
+│   │       │   │       │   │   ├── emoji_sprout.png
+│   │       │   │       │   │   └── icon_leaf.png
+│   │       │   │       │   ├── make_assets.py
+│   │       │   │       │   └── style.py
+│   │       │   │       └── preview.png
+│   │       │   ├── profiles
+│   │       │   │   ├── TEMPLATE.md
+│   │       │   │   ├── discord-bot.json
+│   │       │   │   ├── discord-bot.md
+│   │       │   │   ├── google-play.json
+│   │       │   │   └── google-play.md
+│   │       │   ├── references
+│   │       │   │   └── style-brief.md
+│   │       │   └── scripts
+│   │       │       ├── check_assets.py
+│   │       │       ├── contact_sheet.py
+│   │       │       └── palette_from_image.py
 │   │       ├── get-astro-today
 │   │       │   └── SKILL.md
 │   │       ├── mimi-sprite-studio

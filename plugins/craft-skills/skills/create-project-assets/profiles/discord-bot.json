@@ -1,0 +1,100 @@
+{
+  "name": "discord-bot",
+  "title": "Discord bot and server kit",
+  "sources": [
+    "https://support.discord.com/hc/articles/4402687377815 (stickers)",
+    "Third-party size guides for avatar, emoji and profile banner; check the Developer Portal"
+  ],
+  "assets": [
+    {
+      "id": "app-icon",
+      "description": "Bot / application avatar",
+      "required": false,
+      "confirmed": false,
+      "globs": ["app_icon.png", "app_icon.jpg"],
+      "count": {"min": 0, "max": 1},
+      "formats": ["png", "jpeg"],
+      "square": true,
+      "min_side": 512
+    },
+    {
+      "id": "banners",
+      "description": "Embed banners, one per post type",
+      "required": true,
+      "confirmed": true,
+      "globs": ["banner_*.gif", "banner_*.png"],
+      "count": {"min": 1, "max": 20},
+      "formats": ["gif", "png"],
+      "width": 960,
+      "height": 240
+    },
+    {
+      "id": "thumbnail",
+      "description": "Embed thumbnail (mascot idle loop)",
+      "required": false,
+      "confirmed": true,
+      "globs": ["*_idle.gif", "thumb*.gif", "thumb*.png"],
+      "count": {"min": 0, "max": 5},
+      "formats": ["gif", "png"],
+      "width": 128,
+      "height": 128
+    },
+    {
+      "id": "divider",
+      "description": "Transparent section divider",
+      "required": false,
+      "confirmed": true,
+      "globs": ["divider.gif", "divider.png"],
+      "count": {"min": 0, "max": 1},
+      "formats": ["gif", "png"],
+      "width": 960,
+      "height": 32
+    },
+    {
+      "id": "icon",
+      "description": "Author / footer icon",
+      "required": false,
+      "confirmed": true,
+      "globs": ["icon_*.png"],
+      "count": {"min": 0, "max": 5},
+      "formats": ["png"],
+      "width": 64,
+      "height": 64,
+      "alpha": "required"
+    },
+    {
+      "id": "emoji",
+      "description": "Custom server emoji",
+      "required": false,
+      "confirmed": false,
+      "globs": ["emoji_*.png", "emoji_*.gif"],
+      "count": {"min": 0, "max": 50},
+      "formats": ["png", "gif"],
+      "width": 128,
+      "height": 128,
+      "max_kb": 256
+    },
+    {
+      "id": "stickers",
+      "description": "Server stickers",
+      "required": false,
+      "confirmed": true,
+      "globs": ["sticker_*.png"],
+      "count": {"min": 0, "max": 60},
+      "formats": ["png"],
+      "width": 320,
+      "height": 320,
+      "max_kb": 512
+    },
+    {
+      "id": "profile-banner",
+      "description": "Bot profile banner",
+      "required": false,
+      "confirmed": false,
+      "globs": ["profile_banner.png", "profile_banner.gif"],
+      "count": {"min": 0, "max": 1},
+      "formats": ["png", "gif"],
+      "min_side": 240
+    }
+  ]
+}
