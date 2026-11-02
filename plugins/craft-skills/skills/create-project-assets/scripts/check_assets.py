@@ -20,7 +20,8 @@ FORMAT_NAMES = {"PNG": "png", "JPEG": "jpeg", "GIF": "gif", "WEBP": "webp"}
 def has_alpha(im):
     if im.mode in ("RGBA", "LA", "PA"):
         return True
-    return im.mode == "P" and "transparency" in im.info
+    # Palette, RGB and grayscale PNGs can carry colour-key transparency (tRNS).
+    return "transparency" in im.info
 
 
 def is_animated(im):
