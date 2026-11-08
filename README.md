@@ -62,6 +62,12 @@ scripts/update-readme-tree.sh                # keep the directory tree current
 │   │       │   └── SKILL.md
 │   │       ├── get-started
 │   │       │   └── SKILL.md
+│   │       ├── hipaa-readiness-audit
+│   │       │   ├── SKILL.md
+│   │       │   ├── references
+│   │       │   │   └── feature-eligibility.md
+│   │       │   └── scripts
+│   │       │       └── scan_hipaa.py
 │   │       └── mimi-pr-review
 │   │           └── SKILL.md
 │   ├── craft-skills
