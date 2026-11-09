@@ -1,7 +1,7 @@
 {
   "name": "code-skills",
-  "version": "1.0.0",
-  "description": "Mimi's coding skills: project breakdown into buildable subtasks, and pull request preparation and review built on Anthropic's code-review plugin.",
+  "version": "1.1.0",
+  "description": "Mimi's coding skills: project breakdown into buildable subtasks, pull request preparation and review built on Anthropic's code-review plugin, and HIPAA readiness audits of Claude API integrations.",
   "author": {
     "name": "Mimi"
   },
@@ -9,7 +9,9 @@
   "keywords": [
     "code-review",
     "pull-requests",
-    "github"
+    "github",
+    "hipaa",
+    "compliance"
   ],
   "dependencies": [
     {

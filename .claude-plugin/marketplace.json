@@ -36,8 +36,8 @@
     {
       "name": "code-skills",
       "source": "./plugins/code-skills",
-      "description": "Bundled Skills for coding: project breakdown into buildable subtasks, and pull request review with Anthropic's code-review plugin as a dependency.",
-      "version": "1.0.0"
+      "description": "Bundled Skills for coding: project breakdown into buildable subtasks, pull request review with Anthropic's code-review plugin as a dependency, and HIPAA readiness audits of Claude API integrations.",
+      "version": "1.1.0"
     }
   ]
 }
