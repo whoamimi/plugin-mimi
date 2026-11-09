@@ -2,7 +2,8 @@
 """Scan a codebase for Claude API usage that matters for HIPAA readiness.
 
 Pattern-based and deliberately noisy: every hit is a lead to verify by
-reading the code, not a confirmed finding. Stdlib only.
+reading the code, not a confirmed finding. Findings record only file, line
+and rule, never source text, so suspected PHI is not copied. Stdlib only.
 
 Usage:
   python3 scan_hipaa.py <path> [--json findings.json]
@@ -62,7 +63,9 @@ ORDER = {"Blocker": 0, "Gap": 1, "Check": 2}
 
 def iter_files(root):
     for path in root.rglob("*"):
-        if any(part in SKIP_DIRS for part in path.parts):
+        # Only directories beneath the audit root are excluded, so an ancestor
+        # such as /workspace/build cannot suppress the whole scan.
+        if any(part in SKIP_DIRS for part in path.relative_to(root).parts):
             continue
         if path.is_file() and (path.suffix.lower() in SCAN_SUFFIXES or path.name.startswith(".env")):
             try:
@@ -88,8 +91,7 @@ def scan(root):
                         "description": desc,
                         "file": path.relative_to(root).as_posix(),
                         "line": lineno,
-                        # Truncated so suspected PHI is not copied in full.
-                        "snippet": line.strip()[:120],
+                        # No source text is copied: matched lines may hold PHI.
                     })
     findings.sort(key=lambda f: (ORDER[f["severity"]], f["rule"], f["file"], f["line"]))
     return findings
