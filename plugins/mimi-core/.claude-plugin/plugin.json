@@ -1,9 +1,12 @@
 {
   "name": "mimi-core",
   "version": "1.0.0",
-  "description": "Mimi's admin & housekeeping tasks for editing, reviewing, checking tech documentations for projects' codebase, progression tracks and general software practices e.g. CI/CD workflows on Github.",
+  "description": "Mimi's admin & housekeeping tasks for editing, reviewing, checking tech documentations for projects' codebase, progression tracks and general software practices e.g. CI/CD workflows on Github, plus cybersecurity and AI governance learning notes and audit catalogs.",
   "author": {
     "name": "Mimi"
   },
-  "icon": "./assets/icon.png"
+  "icon": "./assets/icon.png",
+  "commands": [
+    "./skills/mimi-cyber/commands/"
+  ]
 }

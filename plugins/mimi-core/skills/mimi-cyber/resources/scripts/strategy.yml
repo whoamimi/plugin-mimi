@@ -1,0 +1,77 @@
+# Unique threat actor strategies, referenced by label from actors.yml.
+# Schema: see "Threat actor strategy" in SKILL.md.
+
+- label: REVERSE_SHELLS
+  description: |
+    The compromised host opens an outbound connection to the attacker and
+    hands over an interactive shell, bypassing inbound firewall rules.
+  defense: |
+    - Enforce strict outbound firewall rules.
+    - Use endpoint detection to spot standard utilities that spawn
+      interactive shells.
+  sources:
+    - https://unit42.paloaltonetworks.com/ai-campaign-targets-linux-infrastructure/
+
+- label: BACKDOOR
+  description: |
+    Malicious code inserted into legitimate files, such as .bashrc or PHP
+    scripts, to regain access later.
+  defense: |
+    - Monitor shell start-up files and web application scripts for changes
+      (file integrity monitoring).
+    - Deploy web application code from version control only.
+  sources:
+    - https://unit42.paloaltonetworks.com/ai-campaign-targets-linux-infrastructure/
+
+- label: SYSGORAT
+  description: |
+    Multi-platform remote access trojan with a persist command offering six
+    installation methods that masquerade as legitimate software.
+  defense: |
+    - Alert on new persistence entries (services, cron, start-up files).
+    - Block unknown outbound command-and-control traffic.
+  sources:
+    - https://unit42.paloaltonetworks.com/ai-campaign-targets-linux-infrastructure/
+
+- label: CREDENTIAL_PROMPT_SPOOFING
+  description: |
+    A fake authentication prompt that mimics sudo captures the password, then
+    forwards it to the real command so the victim notices nothing.
+  defense: |
+    - Watch for aliases or functions that wrap sudo in shell start-up files.
+    - Prefer hardware-backed or key-based authentication for privileged
+      access.
+  sources:
+    - https://unit42.paloaltonetworks.com/ai-campaign-targets-linux-infrastructure/
+
+- label: CLEARTEXT_PASSWORD_SCANNING
+  description: |
+    Searching configuration and command history files for email, SMTP and
+    database passwords.
+  defense: |
+    - Keep secrets in a secret manager, not in configuration files.
+    - Avoid passwords on the command line so they never reach shell history.
+  sources:
+    - https://unit42.paloaltonetworks.com/ai-campaign-targets-linux-infrastructure/
+
+- label: MASQUERADING
+  description: |
+    Naming artifacts after legitimate software (for example a SolarWinds
+    log file) to blend in with normal activity.
+  defense: |
+    - Check unfamiliar files against the software actually installed.
+  sources:
+    - https://unit42.paloaltonetworks.com/ai-campaign-targets-linux-infrastructure/
+
+- label: HIDDEN_PROMPT_INJECTION
+  description: |
+    Instructions hidden in content an agent processes (for example HTML in a
+    support ticket) that make the agent run attacker-chosen actions.
+  defense: |
+    - Scope allowed tools per session at invoke time; disable built-in shell
+      and file tools for sessions that do not need them.
+    - Give each service account least privilege for its integration.
+    - Monitor agent outbound traffic for endpoints outside the integration
+      list.
+  sources:
+    - https://unit42.paloaltonetworks.com/securing-aws-agentcore-harness-credentials/

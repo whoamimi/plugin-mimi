@@ -32,7 +32,7 @@ jobs:
 
       - name: Install lint tools
         run: |
-          pip install ruff==0.16.8
+          pip install ruff==0.16.8 pyyaml==6.0.2
           sudo apt-get update -qq && sudo apt-get install -y -qq shellcheck tree
 
       - name: Validate marketplace and plugins (strict)
@@ -44,6 +44,9 @@ jobs:
 
       - name: Lint skills against authoring best practices
         run: python3 scripts/lint-plugins.py
+
+      - name: Check mimi-cyber catalog indexes
+        run: python3 plugins/mimi-core/skills/mimi-cyber/resources/scripts/update_catalog.py --check
 
       - name: Lint Python scripts
         run: ruff check --select E9,F .
