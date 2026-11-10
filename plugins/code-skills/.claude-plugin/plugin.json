@@ -1,23 +1,21 @@
 {
-  "name": "code-skills",
-  "displayName": "Code Skills",
-  "version": "2.0.0",
-  "description": "Mimi's coding skills: project scaffolding, git repository setup and best practices, GitHub backups, README writing, project breakdown into subtasks, and a cybersecurity and AI governance knowledge base with audit catalogs.",
-  "author": {
-    "name": "Mimi"
-  },
-  "homepage": "https://github.com/whoamimi/plugin-mimi/tree/main/plugins/code-skills",
-  "repository": "https://github.com/whoamimi/plugin-mimi",
-  "icon": "./assets/icon.png",
-  "keywords": [
-    "git",
-    "github",
-    "readme",
-    "project-setup",
-    "cybersecurity",
-    "ai-governance"
-  ],
-  "commands": [
-    "./skills/mimi-cyber/commands/"
-  ]
+	"name": "code-skills",
+	"displayName": "Code Skills",
+	"version": "2.0.0",
+	"description": "Mimi's coding skills: project scaffolding, git repository setup and best practices, GitHub backups, README writing, project breakdown into subtasks, and a cybersecurity and AI governance knowledge base with audit catalogs.",
+	"author": {
+		"name": "Mimi"
+	},
+	"homepage": "https://github.com/whoamimi/plugin-mimi/tree/main/plugins/code-skills",
+	"repository": "https://github.com/whoamimi/plugin-mimi",
+	"icon": "./assets/icon.png",
+	"keywords": [
+		"git",
+		"github",
+		"readme",
+		"project-setup",
+		"cybersecurity",
+		"ai-governance"
+	],
+	"commands": ["./skills/mimi-cyber/commands/"]
 }

@@ -74,178 +74,23 @@ Bypass a hook once with `--no-verify` only for a false positive.
 <!-- tree:start -->
 ```text
 .
-├── .claude
-│   ├── hooks
-│   │   └── session-start.sh
-│   └── settings.json
-├── .claude-plugin
-│   └── marketplace.json
-├── .githooks
-│   ├── post-merge
-│   ├── pre-commit
-│   └── pre-push
-├── .github
-│   └── workflows
-│       └── pr-check-and-merge.yml
-├── .gitignore
-├── CHANGELOG.md
-├── README.md
-├── SECURITY.md
 ├── assets
-│   └── logo.png
 ├── plugins
 │   ├── code-skills
-│   │   ├── .claude-plugin
-│   │   │   └── plugin.json
 │   │   ├── assets
-│   │   │   └── icon.png
 │   │   └── skills
-│   │       ├── backup-project
-│   │       │   └── SKILL.md
-│   │       ├── depth-breakdown
-│   │       │   └── SKILL.md
-│   │       ├── get-started
-│   │       │   └── SKILL.md
-│   │       ├── git-repository-setup
-│   │       │   ├── SKILL.md
-│   │       │   └── templates
-│   │       │       ├── ci-node.yml
-│   │       │       ├── ci-python.yml
-│   │       │       ├── commit-msg
-│   │       │       ├── dependabot.yml
-│   │       │       ├── gitattributes
-│   │       │       ├── pre-commit
-│   │       │       ├── pull_request_template.md
-│   │       │       └── ruleset-main.json
-│   │       ├── mimi-cyber
-│   │       │   ├── SKILL.md
-│   │       │   ├── ai_categories.md
-│   │       │   ├── ai_tags.md
-│   │       │   ├── attack_categories.md
-│   │       │   ├── attack_tags.md
-│   │       │   ├── commands
-│   │       │   │   ├── display-cyber.md
-│   │       │   │   └── update-meta-catalog.md
-│   │       │   ├── resources
-│   │       │   │   ├── articles
-│   │       │   │   │   ├── 2026-10-linux-infrastructure-campaign.md
-│   │       │   │   │   └── 2026-10-prompt-injection.md
-│   │       │   │   └── scripts
-│   │       │   │       ├── actors.yml
-│   │       │   │       ├── attacks.yml
-│   │       │   │       ├── checks.yml
-│   │       │   │       ├── strategy.yml
-│   │       │   │       └── update_catalog.py
-│   │       │   ├── security_categories.md
-│   │       │   └── security_tags.md
-│   │       └── write-readme
-│   │           └── SKILL.md
 │   ├── craft-skills
-│   │   ├── .claude-plugin
-│   │   │   └── plugin.json
 │   │   ├── assets
-│   │   │   └── icon.png
 │   │   └── skills
-│   │       ├── create-brand-assets
-│   │       │   ├── SKILL.md
-│   │       │   ├── examples
-│   │       │   │   └── discord-cozy-grove
-│   │       │   │       ├── cozy_grove
-│   │       │   │       │   ├── README.md
-│   │       │   │       │   ├── __init__.py
-│   │       │   │       │   ├── __main__.py
-│   │       │   │       │   ├── assets
-│   │       │   │       │   │   ├── banner_event.gif
-│   │       │   │       │   │   ├── banner_news.gif
-│   │       │   │       │   │   ├── banner_rules.gif
-│   │       │   │       │   │   ├── banner_welcome.gif
-│   │       │   │       │   │   ├── cat_idle.gif
-│   │       │   │       │   │   ├── divider.gif
-│   │       │   │       │   │   ├── emoji_cozy_cat.gif
-│   │       │   │       │   │   ├── emoji_cozy_cat.png
-│   │       │   │       │   │   ├── emoji_mushroom.png
-│   │       │   │       │   │   ├── emoji_orange.png
-│   │       │   │       │   │   ├── emoji_sprout.png
-│   │       │   │       │   │   └── icon_leaf.png
-│   │       │   │       │   ├── make_assets.py
-│   │       │   │       │   └── style.py
-│   │       │   │       └── preview.png
-│   │       │   ├── profiles
-│   │       │   │   ├── TEMPLATE.md
-│   │       │   │   ├── discord-bot.json
-│   │       │   │   ├── discord-bot.md
-│   │       │   │   ├── google-play.json
-│   │       │   │   └── google-play.md
-│   │       │   ├── references
-│   │       │   │   └── style-brief.md
-│   │       │   └── scripts
-│   │       │       ├── check_assets.py
-│   │       │       ├── contact_sheet.py
-│   │       │       └── palette_from_image.py
-│   │       ├── get-astro-today
-│   │       │   └── SKILL.md
-│   │       ├── mimi-sprite-studio
-│   │       │   ├── SKILL.md
-│   │       │   ├── references
-│   │       │   │   ├── layered-animation.md
-│   │       │   │   └── mascot-styles.md
-│   │       │   └── scripts
-│   │       │       ├── animate.py
-│   │       │       ├── cutout.py
-│   │       │       └── render_svg.py
-│   │       └── run-tarot-reading
-│   │           ├── SKILL.md
-│   │           ├── assets
-│   │           │   ├── card_picker.html
-│   │           │   └── deck.json
-│   │           ├── references
-│   │           │   ├── reading-craft.md
-│   │           │   └── spreads.md
-│   │           └── scripts
-│   │               └── tarot.py
 │   ├── life-skills
-│   │   ├── .claude-plugin
-│   │   │   └── plugin.json
 │   │   ├── assets
-│   │   │   └── icon.png
 │   │   └── skills
-│   │       ├── check-gmail
-│   │       │   └── SKILL.md
-│   │       ├── daily-decision-maker
-│   │       │   └── SKILL.md
-│   │       └── mimi-cbt
-│   │           └── SKILL.md
 │   ├── mimi-core
-│   │   ├── .claude-plugin
-│   │   │   └── plugin.json
 │   │   ├── assets
-│   │   │   └── icon.png
 │   │   └── skills
-│   │       ├── audit-mimis-imac
-│   │       │   └── SKILL.md
-│   │       ├── check-beehive
-│   │       │   └── SKILL.md
-│   │       └── mimi-world
-│   │           └── SKILL.md
 │   └── soft-skills
-│       ├── .claude-plugin
-│       │   └── plugin.json
 │       ├── assets
-│       │   └── icon.png
 │       └── skills
-│           ├── mimi-edit
-│           │   └── SKILL.md
-│           ├── mimi-notes-summary
-│           │   └── SKILL.md
-│           ├── mimi-rephrase
-│           │   └── SKILL.md
-│           └── mimi-tutor
-│               └── SKILL.md
 └── scripts
-    ├── check.sh
-    ├── lint-plugins.py
-    ├── tag-releases.sh
-    ├── update-readme-plugins.py
-    └── update-readme-tree.sh
 ```
 <!-- tree:end -->
