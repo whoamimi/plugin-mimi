@@ -155,6 +155,27 @@ scripts/update-readme-tree.sh                # keep the directory tree current
 │   │       │   └── SKILL.md
 │   │       ├── check-beehive
 │   │       │   └── SKILL.md
+│   │       ├── mimi-cyber
+│   │       │   ├── SKILL.md
+│   │       │   ├── ai_categories.md
+│   │       │   ├── ai_tags.md
+│   │       │   ├── attack_categories.md
+│   │       │   ├── attack_tags.md
+│   │       │   ├── commands
+│   │       │   │   ├── display-cyber.md
+│   │       │   │   └── update-meta-catalog.md
+│   │       │   ├── resources
+│   │       │   │   ├── articles
+│   │       │   │   │   ├── 2026-10-linux-infrastructure-campaign.md
+│   │       │   │   │   └── 2026-10-prompt-injection.md
+│   │       │   │   └── scripts
+│   │       │   │       ├── actors.yml
+│   │       │   │       ├── attacks.yml
+│   │       │   │       ├── checks.yml
+│   │       │   │       ├── strategy.yml
+│   │       │   │       └── update_catalog.py
+│   │       │   ├── security_categories.md
+│   │       │   └── security_tags.md
 │   │       ├── mimi-world
 │   │       │   └── SKILL.md
 │   │       └── write-readme

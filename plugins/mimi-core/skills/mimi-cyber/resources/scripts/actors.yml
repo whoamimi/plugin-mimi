@@ -1,0 +1,73 @@
+# Attack case studies, one per case described in resources/articles/.
+# Schema: see "Case study attack" in SKILL.md.
+
+- label: attack_linux_via_campaigns
+  domain: SECURITY
+  source: https://unit42.paloaltonetworks.com/ai-campaign-targets-linux-infrastructure/
+  category: MALWARE_VIA_MAIL
+  strategies:
+    - REVERSE_SHELLS
+    - BACKDOOR
+    - SYSGORAT
+    - CREDENTIAL_PROMPT_SPOOFING
+    - CLEARTEXT_PASSWORD_SCANNING
+    - MASQUERADING
+  tags:
+    - WEB_SHELLS
+    - MULTI_PLATFORM_RAT
+  description: |
+    The attackers focused on Linux environments to conduct extensive
+    reconnaissance and maintain persistent network access to support
+    intelligence gathering. They attempted to dump sensitive databases and
+    exfiltrate government mailboxes to access social media accounts.
+  phases:
+    entry: |
+      - Editing the .bashrc file
+      - Inserting malicious lines of code into PHP scripts
+      - Scanning the network for cleartext passwords
+    runtime: |
+      - A spoofed prompt mimicking the system authentication prompt captures
+        the user's password, then passes it to the real sudo so the victim
+        notices nothing. Captured passwords were logged to
+        Solarwinds.StatusLog.txt to mimic legitimate SolarWinds activity
+        (no evidence SolarWinds systems were compromised).
+      - .bashrc shell scripts holding environment secrets and variables.
+      - PHP credential loggers.
+      - Cleartext password scanning of configuration and command history
+        files for email, SMTP and database passwords.
+      - Multi-platform remote access trojan (SysGoRAT).
+      - NetCat and raw TCP connections.
+    goal: |
+      Secret credentials on the user's devices.
+    exit:
+      - A persist action, triggered by the malware's control message, with six
+        installation methods for cross-platform environments, all using
+        artifact names that masquerade as legitimate software.
+      - LinPEAS for privilege-escalation discovery.
+      - PwnKit, a self-contained exploit attempt for CVE-2021-4034.
+
+- label: attack_agentcore_via_prompt_injection
+  domain: AI
+  source: https://unit42.paloaltonetworks.com/securing-aws-agentcore-harness-credentials/
+  category: PROMPT_INJECTION
+  strategies:
+    - HIDDEN_PROMPT_INJECTION
+  tags:
+    - PROMPT_INJECTION_MCP
+    - SECRET_LEAKS_PAYLOAD
+  description: |
+    A crafted support ticket sent by POST request carried hidden HTML
+    instructions. The agent harness processing it ran the hidden function and
+    returned its JWT credentials and MCP server URL.
+  phases:
+    entry: |
+      - Support ticket submitted by POST request with instructions hidden in
+        its HTML.
+    runtime: |
+      - The harness, with built-in shell and file tools enabled by default,
+        executes the hidden instructions.
+    goal: |
+      The harness's JWT credentials and MCP server URL, giving access to its
+      downstream integrations.
+    exit:
+      - Credentials sent back in the harness response.

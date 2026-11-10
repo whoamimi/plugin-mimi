@@ -1,0 +1,10 @@
+# Unique index of attacks; one line per case study in actors.yml.
+# Schema: see "Attack index" in SKILL.md.
+
+- label: attack_linux_via_campaigns
+  category: MALWARE_VIA_MAIL
+  domain: SECURITY
+
+- label: attack_agentcore_via_prompt_injection
+  category: PROMPT_INJECTION
+  domain: AI

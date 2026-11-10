@@ -1,0 +1,78 @@
+# Audit procedures for development, drawn from the case studies in actors.yml.
+# Schema: see "Audit procedure" in SKILL.md.
+# audit_steps are reference commands from a case study: review before running.
+
+- audit_label: audit_cloud_credentials
+  domain: AI
+  source: https://unit42.paloaltonetworks.com/securing-aws-agentcore-harness-credentials/
+  audit_description: |
+    Checks whether an agent harness can be prompt-injected through processed
+    content into leaking its JWT credentials and MCP server URL.
+  audit_steps: |
+    # Reproduction steps from the case study, run against your own test harness only
+    python -m tests.stupid.run --all
+    python create_harness_call.py --victims-url
+    python pid1_identity_recon_exfil.py   # attempts to obtain JWT credentials and MCP server URL
+  observations:
+    - event: |
+        A support ticket received by POST request ran a hidden HTML function
+        and returned the JWT and MCP server URL.
+      severity: EXTREME
+      action:
+        - ROTATE_JWT_SECRET_KEYS
+        - RESET_SERVER_SESSION_STATE
+  pre_checks: |
+    1. Set up correct user and group role permissions.
+    2. Scope the allowedTools parameter at InvokeHarness time (not CreateHarness)
+       to what each session needs. The built-in shell and file_operations tools
+       are enabled by default; sessions that do not need them should not get them.
+    3. Scope every identity vault service account to least privilege for its
+       downstream integration. A leaked credential is worth what its scope buys.
+    4. Watch outbound traffic from harness containers. Any endpoint not in the
+       downstream integration list is evidence of an active injection, not
+       configuration drift.
+  live_checks: |
+    1. While the MCP connector server is running, alert on outbound requests to
+       endpoints outside the integration list.
+  post_checks: |
+    1. Audit logs for missed or unexpected tool calls.
+  audit_category: NETWORKING
+  audit_tag:
+    - PROMPT_INJECTION_MCP
+    - SECRET_LEAKS_PAYLOAD
+
+- audit_label: audit_linux_shell_persistence
+  domain: SECURITY
+  source: https://unit42.paloaltonetworks.com/ai-campaign-targets-linux-infrastructure/
+  audit_description: |
+    Checks a Linux host for the persistence and credential-theft footholds used
+    in the campaign: modified shell start-up files, sudo wrappers, cleartext
+    passwords and unexpected outbound shells.
+  audit_steps: |
+    # Read-only checks; run as the account being audited
+    grep -nE 'sudo|curl|wget|nc |/dev/tcp' ~/.bashrc ~/.profile /etc/bash.bashrc 2>/dev/null
+    alias sudo 2>/dev/null; type sudo
+    grep -rniE 'password|passwd|smtp_pass' /etc /var/www --include='*.conf' --include='*.php' 2>/dev/null | head -50
+    find / -name 'Solarwinds.StatusLog.txt' 2>/dev/null
+    ss -tunap | grep -E 'ESTAB' | grep -vE ':(22|443)\b'
+  observations:
+    - event: |
+        A sudo wrapper in .bashrc logs entered passwords to a file named after
+        legitimate software.
+      severity: HIGH
+      action:
+        - ROTATE_USER_PASSWORDS
+        - RESTORE_SHELL_STARTUP_FILES
+  pre_checks: |
+    1. Enforce strict outbound firewall rules on servers.
+    2. Keep passwords in a secret manager, not in configuration files or shell history.
+    3. Patch local privilege-escalation bugs such as PwnKit (CVE-2021-4034).
+  live_checks: |
+    1. Use endpoint detection to spot standard utilities spawning interactive shells.
+    2. Monitor .bashrc and web application scripts for changes.
+  post_checks: |
+    1. Review new persistence entries (services, cron, start-up files).
+  audit_category: ENDPOINT
+  audit_tag:
+    - REVERSE_SHELL_LINUX
+    - CLEARTEXT_SECRETS_CONFIG
