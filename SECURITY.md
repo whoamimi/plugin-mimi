@@ -48,7 +48,6 @@ The repository is public, so everything in it is public, including Git history.
 - No API keys, tokens, passwords, cookies, or `.env` files.
 - No IP addresses, hostnames, Wi-Fi names, device serial numbers or remote-access links. Skills such as `mimi-core:check-beehive` and `mimi-core:mimi-world` describe the home network and personal projects in general terms only; real values belong in local, uncommitted config.
 - No email addresses, phone numbers, or real names of other people. `life-skills:check-gmail` must never include message contents or addresses in examples.
-- `life-skills:mimi-cbt` must not contain personal health history. It is a self-help guide, not a substitute for professional care.
 
 If a secret is committed, treat it as exposed: revoke or rotate it first, then remove it from history. Deleting it in a new commit is not enough.
 

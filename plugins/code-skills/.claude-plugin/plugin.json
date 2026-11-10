@@ -1,7 +1,7 @@
 {
 	"name": "code-skills",
 	"displayName": "Code Skills",
-	"version": "2.0.0",
+	"version": "2.1.0",
 	"description": "Mimi's coding skills: project scaffolding, git repository setup and best practices, GitHub backups, README writing, project breakdown into subtasks, and a cybersecurity and AI governance knowledge base with audit catalogs.",
 	"author": {
 		"name": "Mimi"
