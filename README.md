@@ -20,19 +20,32 @@ claude plugin marketplace add anthropics/claude-plugins-official
 claude plugin install code-skills@plugin-mimi
 ```
 
+## Updates and versions
+
+Each plugin pins its own `version` in `.claude-plugin/plugin.json` (never in `marketplace.json`), following semantic versioning: **major** for removed or renamed skills, **minor** for new skills, **patch** for fixes and wording. Installed plugins only update when that version changes, so every change to a plugin must bump it; the PR check enforces this. See [CHANGELOG.md](CHANGELOG.md) for what each version contains.
+
+To receive updates automatically, open `/plugin` → **Marketplaces** → `plugin-mimi` → **Enable auto-update**. To update by hand:
+
+```bash
+claude plugin marketplace update plugin-mimi
+claude plugin update <plugin-name>@plugin-mimi
+```
+
+Every released version is tagged `<plugin>--v<version>` (for example `soft-skills--v2.0.0`), the convention Claude Code uses to resolve plugin dependency version ranges. After a merge, the workflow tags new versions; to tag by hand, run `scripts/tag-releases.sh --push` on `main`.
+
 ## Checks
 
 Every pull request to `main` runs these checks before it is merged automatically. Run them locally before pushing:
 
 ```bash
 claude plugin validate --strict .            # marketplace and manifests
-python3 scripts/lint-plugins.py              # skill authoring best practices
+python3 scripts/lint-plugins.py --base origin/main  # skill best practices + version bumps
 ruff check --select E9,F .                   # Python syntax and errors
 shellcheck scripts/*.sh                      # shell scripts
 scripts/update-readme-tree.sh                # keep the directory tree current
 ```
 
-`scripts/lint-plugins.py` follows Anthropic's [plugin reference](https://code.claude.com/docs/en/plugins-reference) and [skill authoring best practices](https://platform.claude.com/docs/en/agents-and-tools/agent-skills/best-practices): skill names are kebab-case, at most 64 characters, match their folder and avoid reserved words; descriptions are under 1,024 characters with no XML tags, say when to use the skill and quote example requests; SKILL.md bodies stay under 500 lines; references stay one level deep; manifests and marketplace entries agree.
+`scripts/lint-plugins.py` follows Anthropic's [plugin reference](https://code.claude.com/docs/en/plugins-reference) and [skill authoring best practices](https://platform.claude.com/docs/en/agents-and-tools/agent-skills/best-practices): skill names are kebab-case, at most 64 characters, match their folder and avoid reserved words; descriptions are under 1,024 characters with no XML tags, say when to use the skill and quote example requests; SKILL.md bodies stay under 500 lines; references stay one level deep; manifest names match their marketplace entries; versions are `MAJOR.MINOR.PATCH`, live only in `plugin.json`, and rise whenever a plugin changes (with `--base`).
 
 ## Directory Overview
 
@@ -45,6 +58,7 @@ scripts/update-readme-tree.sh                # keep the directory tree current
 │   └── workflows
 │       └── pr-check-and-merge.yml
 ├── .gitignore
+├── CHANGELOG.md
 ├── README.md
 ├── SECURITY.md
 ├── assets
@@ -196,6 +210,7 @@ scripts/update-readme-tree.sh                # keep the directory tree current
 │               └── SKILL.md
 └── scripts
     ├── lint-plugins.py
+    ├── tag-releases.sh
     └── update-readme-tree.sh
 ```
 <!-- tree:end -->

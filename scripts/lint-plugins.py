@@ -6,9 +6,10 @@ Sources:
   https://code.claude.com/docs/en/plugins-reference
   https://platform.claude.com/docs/en/agents-and-tools/agent-skills/best-practices
 
-Usage: python3 scripts/lint-plugins.py   (from anywhere; stdlib only)
+Usage: python3 scripts/lint-plugins.py [--base origin/main]   (stdlib only)
 Exits 1 when any error is found. Warnings are printed but do not fail.
 """
+import argparse
 import json
 import re
 import subprocess
@@ -24,6 +25,7 @@ BODY_MAX_LINES = 500
 REFERENCE_TOC_LINES = 100
 RESERVED_WORDS = ("anthropic", "claude")
 
+SEMVER = re.compile(r"^\d+\.\d+\.\d+$")
 KEBAB = re.compile(r"^[a-z0-9]+(-[a-z0-9]+)*$")
 XML_TAG = re.compile(r"<\/?[A-Za-z][^>]*>")
 FIRST_OR_SECOND_PERSON = re.compile(r"^\s*(I|I'm|I can|I will|You|You can|We)\b")
@@ -33,6 +35,7 @@ JUNK_FILES = (".DS_Store", "Thumbs.db")
 JUNK_DIRS = ("__pycache__", ".ruff_cache", ".pytest_cache")
 
 errors, warnings = [], []
+BASE_REF = None
 
 
 def rel(path):
@@ -162,6 +165,36 @@ def check_skill(skill_md):
             warn(ref, f"reference is over {REFERENCE_TOC_LINES} lines; add a '## Contents' section")
 
 
+def git(*args):
+    return subprocess.run(["git", *args], cwd=ROOT, capture_output=True, text=True)
+
+
+def check_version_bump(plugin_dir, manifest_path, version):
+    """A plugin whose files changed since BASE_REF must raise its version.
+
+    Users only receive an update when the version string changes, so a change
+    without a bump never reaches anyone who installed the plugin.
+    """
+    rel = plugin_dir.relative_to(ROOT).as_posix()
+    # Compare the working tree with the merge base, so both committed and
+    # uncommitted changes count, but changes made on the base branch do not.
+    base = git("merge-base", BASE_REF, "HEAD").stdout.strip() or BASE_REF
+    if not git("diff", "--quiet", base, "--", rel).returncode:
+        return  # no changes in this plugin
+    old = git("show", f"{base}:{rel}/.claude-plugin/plugin.json")
+    if old.returncode:
+        return  # new plugin: nothing to compare against
+    try:
+        old_version = json.loads(old.stdout).get("version", "")
+    except json.JSONDecodeError:
+        return
+    if not (SEMVER.match(version) and SEMVER.match(old_version)):
+        return
+    if tuple(map(int, version.split("."))) <= tuple(map(int, old_version.split("."))):
+        error(manifest_path, f"plugin changed since {BASE_REF} but version is still {old_version}; "
+                             "bump it (patch: fixes, minor: new skills, major: removed or renamed skills)")
+
+
 def check_plugin(plugin_dir, entry):
     manifest_path = plugin_dir / ".claude-plugin" / "plugin.json"
     if not manifest_path.exists():
@@ -181,8 +214,14 @@ def check_plugin(plugin_dir, entry):
     for field in ("version", "description", "author"):
         if not manifest.get(field):
             error(manifest_path, f"missing '{field}'")
-    if entry.get("version") and manifest.get("version") != entry.get("version"):
-        error(manifest_path, f"version {manifest.get('version')} differs from marketplace entry {entry.get('version')}")
+    version = manifest.get("version", "")
+    if version and not SEMVER.match(version):
+        error(manifest_path, f"version '{version}' must be MAJOR.MINOR.PATCH")
+    if "version" in entry:
+        error(ROOT / ".claude-plugin" / "marketplace.json",
+              f"entry '{entry.get('name')}' sets version; keep it only in plugin.json")
+    if BASE_REF:
+        check_version_bump(plugin_dir, manifest_path, version)
     icon = manifest.get("icon")
     if icon and not (plugin_dir / icon).is_file():
         error(manifest_path, f"icon not found: {icon}")
@@ -201,6 +240,14 @@ def check_plugin(plugin_dir, entry):
 
 
 def main():
+    global BASE_REF
+    ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
+    ap.add_argument("--base", metavar="REF",
+                    help="git ref to compare against, e.g. origin/main; changed plugins must bump their version")
+    BASE_REF = ap.parse_args().base
+    if BASE_REF and git("rev-parse", "--verify", "--quiet", BASE_REF).returncode:
+        error(ROOT, f"--base {BASE_REF} is not a known git ref (fetch it first)")
+        return finish()
     marketplace_path = ROOT / ".claude-plugin" / "marketplace.json"
     marketplace = load_json(marketplace_path)
     if marketplace is None:

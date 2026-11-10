@@ -1,11 +1,21 @@
 {
   "name": "mimi-core",
-  "version": "1.0.0",
+  "displayName": "Mimi Core",
+  "version": "1.1.0",
   "description": "Mimi's admin & housekeeping tasks for editing, reviewing, checking tech documentations for projects' codebase, progression tracks and general software practices e.g. CI/CD workflows on Github, plus cybersecurity and AI governance learning notes and audit catalogs.",
   "author": {
     "name": "Mimi"
   },
+  "homepage": "https://github.com/whoamimi/plugin-mimi/tree/main/plugins/mimi-core",
+  "repository": "https://github.com/whoamimi/plugin-mimi",
   "icon": "./assets/icon.png",
+  "keywords": [
+    "readme",
+    "home-network",
+    "macos-security",
+    "cybersecurity",
+    "ai-governance"
+  ],
   "commands": [
     "./skills/mimi-cyber/commands/"
   ]

@@ -4,7 +4,7 @@
   "owner": {
     "name": "Mimi"
   },
-  "description": "Mimi's personal skill bundle covering life, soft, and tech skills.",
+  "description": "Mimi's personal Claude plugins: life admin, communication and writing, creative crafts, coding and security, and core housekeeping skills.",
   "allowCrossMarketplaceDependenciesOn": [
     "claude-plugins-official"
   ],
@@ -12,32 +12,27 @@
     {
       "name": "life-skills",
       "source": "./plugins/life-skills",
-      "description": "Bundled Skills to assist planning and management across life aspects: work, finance, friends & family, physical activity, mental activity, education / initiative projects.",
-      "version": "1.0.0"
+      "description": "Bundled Skills to assist planning and management across life aspects: work, finance, friends & family, physical activity, mental activity, education / initiative projects."
     },
     {
       "name": "soft-skills",
       "source": "./plugins/soft-skills",
-      "description": "Bundled Skills to assist the user in improving communication and writing skills, and broadening vocabulary and literacy skills.",
-      "version": "1.0.0"
+      "description": "Bundled Skills to assist the user in improving communication and writing skills, and broadening vocabulary and literacy skills."
     },
     {
       "name": "mimi-core",
       "source": "./plugins/mimi-core",
-      "description": "Mimi's admin & housekeeping tasks for editing, reviewing, checking tech documentations for projects' codebase, progression tracks and general software practices e.g. CI/CD workflows on Github.",
-      "version": "1.0.0"
+      "description": "Mimi's admin & housekeeping tasks for editing, reviewing, checking tech documentations for projects' codebase, progression tracks and general software practices e.g. CI/CD workflows on Github."
     },
     {
       "name": "craft-skills",
       "source": "./plugins/craft-skills",
-      "description": "Bundled Skills for creative and reflective crafts: sprite cutting, animated stickers, mascot PFPs, project asset kits for Discord bots and app stores, daily astrology and tarot readings.",
-      "version": "1.0.0"
+      "description": "Bundled Skills for creative and reflective crafts: sprite cutting, animated stickers, mascot PFPs, project asset kits for Discord bots and app stores, daily astrology and tarot readings."
     },
     {
       "name": "code-skills",
       "source": "./plugins/code-skills",
-      "description": "Bundled Skills for coding: project breakdown into buildable subtasks, pull request review with Anthropic's code-review plugin as a dependency, and HIPAA readiness audits of Claude API integrations.",
-      "version": "1.1.0"
+      "description": "Bundled Skills for coding: project breakdown into buildable subtasks, pull request review with Anthropic's code-review plugin as a dependency, and HIPAA readiness audits of Claude API integrations."
     }
   ]
 }
