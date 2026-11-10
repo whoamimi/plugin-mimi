@@ -1,17 +1,17 @@
 ---
-name: create-project-assets
-description: Generates a matching set of branded image assets for a project from the user's style reference (a photo or a written description), sized and checked against a platform profile such as a Discord bot kit or Google Play store listing, with new platforms added as profiles. Use when the user wants icons, banners, emoji, stickers, feature graphics or store artwork for an app, bot, server or project in a consistent style. Examples include "make Discord bot assets in this style", "create Google Play assets for my app", "turn this photo into a branding kit" and "I need an icon and banners that look cozy and pixel-art".
+name: create-brand-assets
+description: Generates a matching brand kit (icons, banners, emoji, stickers, feature graphics, mascots) for an app, bot or project from the user's style reference, a photo or a written description, using mimi-sprite-studio as the default design generator and checking every file against a platform profile such as a Discord bot kit or Google Play store listing. Use when the user wants branded artwork or store assets in one consistent style. Examples include "make Discord bot brand assets in this style", "create Google Play assets for my app", "turn this photo into a brand kit" and "I need an icon and banners that look cozy and pixel-art".
 ---
 
-# Create Project Assets
+# Create Brand Assets
 
-Turn one style reference into a consistent, platform-ready asset kit. The skill is a recipe with three swappable parts:
+Turn one style reference into a consistent, platform-ready brand kit. The skill is a recipe with three swappable parts:
 
 - **Style brief** — palette, art style, motifs and mood taken from the user's photo or text.
 - **Profile** — what a platform needs: files, sizes, formats and limits (`profiles/<name>.md` + `profiles/<name>.json`).
-- **Generator** — a script that draws every asset from the brief, so the kit can be regenerated after any change.
+- **Generator** — **`mimi-sprite-studio`** (in this plugin) by default: it cuts subjects out of photos, animates stickers and renders SVG mascots and icons. A generator script that draws every asset from the brief keeps the kit reproducible.
 
-Scripts are in `${CLAUDE_PLUGIN_ROOT}/skills/create-project-assets/scripts/` and need Python 3 with Pillow. Run them with `python3 -I`. Write all output to the session scratchpad or a folder the user names, never into this repository unless asked.
+Scripts are in `${CLAUDE_PLUGIN_ROOT}/skills/create-brand-assets/scripts/` and need Python 3 with Pillow. Run them with `python3 -I`. Write all output to the session scratchpad or a folder the user names, never into this repository unless asked.
 
 ## 1. Collect the inputs
 
@@ -44,12 +44,20 @@ Read the profile's guide before generating. **No profile fits?** Create one with
 
 ## 4. Generate the assets
 
-1. Copy the closest example into the output folder as a starting point. `examples/discord-cozy-grove/` is a complete pixel-art kit: `cozy_grove/make_assets.py` draws everything in code (palette dict, 5×7 pixel font, string-art sprites, looping GIF animation), and `cozy_grove/style.py` posts Discord embeds and cards that use the assets. `examples/discord-cozy-grove/preview.png` shows the result.
-2. Replace its palette with the brief's colours, its sprites and motifs with the brief's, and its sizes and file names with the profile's spec.
-3. Match the drawing method to the art style:
-   - **Pixel art** — draw at low resolution and upscale with `Image.NEAREST`, as the example does.
-   - **Flat, vector or glossy styles** — draw SVG and render it with `${CLAUDE_PLUGIN_ROOT}/skills/mimi-sprite-studio/scripts/render_svg.py`.
-4. Keep everything in one generator script, so changing a colour or word means re-running it, not redrawing by hand.
+Use **`mimi-sprite-studio`** as the default generator. Its scripts are in `${CLAUDE_PLUGIN_ROOT}/skills/mimi-sprite-studio/scripts/` and its style recipes in `${CLAUDE_PLUGIN_ROOT}/skills/mimi-sprite-studio/references/`; follow that skill's instructions for each tool.
+
+| Asset need | mimi-sprite-studio tool |
+|---|---|
+| Subject or mascot from the user's photo or sprite sheet | `cutout.py`: remove the background and cut transparent PNGs |
+| Icon, avatar, mascot or profile picture | an SVG built from `references/mascot-styles.md`, rendered with `render_svg.py` (use `--circle-preview` for round crops) |
+| Animated emoji, sticker or thumbnail | `animate.py` (float, bounce, jelly, sway, pulse), or `references/layered-animation.md` for multi-part art |
+| Banners, feature graphics, dividers | an SVG at the profile's exact size rendered with `render_svg.py --size WIDTH --height HEIGHT`, reusing the mascot and palette |
+
+Then:
+
+1. Resize and export every file to the profile's exact size, format and file names.
+2. Keep all steps in one generator script in the output folder, so changing a colour or word means re-running it, not redrawing by hand.
+3. **Pixel-art kits drawn in code** are the exception: start from `examples/discord-cozy-grove/` instead. `cozy_grove/make_assets.py` draws everything at low resolution (palette dict, 5×7 pixel font, string-art sprites, looping GIFs) and upscales with `Image.NEAREST`; `cozy_grove/style.py` posts Discord embeds and cards that use the assets; `preview.png` shows the result. Replace its palette, sprites, words and sizes with the brief's and the profile's.
 
 ## 5. Check against the profile
 

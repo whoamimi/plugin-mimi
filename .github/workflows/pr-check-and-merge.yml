@@ -48,13 +48,13 @@ jobs:
         run: python3 scripts/lint-plugins.py --base "origin/${{ github.base_ref }}"
 
       - name: Check mimi-cyber catalog indexes
-        run: python3 plugins/mimi-core/skills/mimi-cyber/resources/scripts/update_catalog.py --check
+        run: python3 plugins/code-skills/skills/mimi-cyber/resources/scripts/update_catalog.py --check
 
       - name: Lint Python scripts
         run: ruff check --select E9,F .
 
       - name: Lint shell scripts
-        run: shellcheck scripts/*.sh
+        run: shellcheck scripts/*.sh plugins/code-skills/skills/git-repository-setup/templates/pre-commit plugins/code-skills/skills/git-repository-setup/templates/commit-msg
 
       - name: Check README directory tree is current
         run: |

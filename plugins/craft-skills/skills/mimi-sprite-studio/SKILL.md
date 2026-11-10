@@ -39,6 +39,7 @@ Discord crops to a circle: keep everything inside a centred circle of ~90% of th
 ```
 python3 -I render_svg.py mascot.svg mascot.png --size 1024 --circle-preview
 ```
+For non-square art such as banners, add `--height` (e.g. `--size 960 --height 240`).
 Style recipes (what the user liked) are in `references/mascot-styles.md`. Build from the recipe closest to the user's references and change colours/features; reuse one SVG across variants by parametrising colours. Always view the `_circle.png` preview. No image-generation model is available here — say so once, and offer to refine rather than promising photoreal output.
 
 ## 4. Deliver

@@ -1,0 +1,24 @@
+#!/usr/bin/env bash
+# Enforce Conventional Commits: <type>(<optional scope>)!: <summary>
+# Install: git config core.hooksPath .githooks
+set -euo pipefail
+
+first_line=$(head -n 1 "$1")
+
+# Let git's own generated messages through.
+case "$first_line" in
+  Merge\ *|Revert\ *|fixup!\ *|squash!\ *) exit 0 ;;
+esac
+
+types='feat|fix|docs|style|refactor|perf|test|build|ci|chore|revert'
+if ! printf '%s\n' "$first_line" | grep -Eq "^(${types})(\([a-z0-9._/-]+\))?!?: .{1,72}$"; then
+  cat >&2 <<EOF
+commit-msg: "$first_line" is not a Conventional Commit.
+Use <type>(<optional scope>): <summary of at most 72 characters>, for example:
+  feat: add export to CSV
+  fix(auth): refresh expired tokens
+  docs!: rewrite the install guide
+Types: ${types//|/, }
+EOF
+  exit 1
+fi

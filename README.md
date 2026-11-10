@@ -13,13 +13,6 @@ claude plugin marketplace add whoamimi/plugin-mimi
 claude plugin install <plugin-name>@plugin-mimi
 ```
 
-`code-skills` depends on Anthropic's `code-review` plugin. Add Anthropic's marketplace once before installing it, so the dependency can be installed automatically:
-
-```bash
-claude plugin marketplace add anthropics/claude-plugins-official
-claude plugin install code-skills@plugin-mimi
-```
-
 ## Updates and versions
 
 Each plugin pins its own `version` in `.claude-plugin/plugin.json` (never in `marketplace.json`), following semantic versioning: **major** for removed or renamed skills, **minor** for new skills, **patch** for fixes and wording. Installed plugins only update when that version changes, so every change to a plugin must bump it; the PR check enforces this. See [CHANGELOG.md](CHANGELOG.md) for what each version contains.
@@ -41,7 +34,7 @@ Every pull request to `main` runs these checks before it is merged automatically
 claude plugin validate --strict .            # marketplace and manifests
 python3 scripts/lint-plugins.py --base origin/main  # skill best practices + version bumps
 ruff check --select E9,F .                   # Python syntax and errors
-shellcheck scripts/*.sh                      # shell scripts
+shellcheck scripts/*.sh plugins/*/skills/*/templates/{pre-commit,commit-msg}   # shell scripts and hook templates
 scripts/update-readme-tree.sh                # keep the directory tree current
 ```
 
@@ -76,13 +69,39 @@ scripts/update-readme-tree.sh                # keep the directory tree current
 │   │       │   └── SKILL.md
 │   │       ├── get-started
 │   │       │   └── SKILL.md
-│   │       ├── hipaa-readiness-audit
+│   │       ├── git-repository-setup
 │   │       │   ├── SKILL.md
-│   │       │   ├── references
-│   │       │   │   └── feature-eligibility.md
-│   │       │   └── scripts
-│   │       │       └── scan_hipaa.py
-│   │       └── mimi-pr-review
+│   │       │   └── templates
+│   │       │       ├── ci-node.yml
+│   │       │       ├── ci-python.yml
+│   │       │       ├── commit-msg
+│   │       │       ├── dependabot.yml
+│   │       │       ├── gitattributes
+│   │       │       ├── pre-commit
+│   │       │       ├── pull_request_template.md
+│   │       │       └── ruleset-main.json
+│   │       ├── mimi-cyber
+│   │       │   ├── SKILL.md
+│   │       │   ├── ai_categories.md
+│   │       │   ├── ai_tags.md
+│   │       │   ├── attack_categories.md
+│   │       │   ├── attack_tags.md
+│   │       │   ├── commands
+│   │       │   │   ├── display-cyber.md
+│   │       │   │   └── update-meta-catalog.md
+│   │       │   ├── resources
+│   │       │   │   ├── articles
+│   │       │   │   │   ├── 2026-10-linux-infrastructure-campaign.md
+│   │       │   │   │   └── 2026-10-prompt-injection.md
+│   │       │   │   └── scripts
+│   │       │   │       ├── actors.yml
+│   │       │   │       ├── attacks.yml
+│   │       │   │       ├── checks.yml
+│   │       │   │       ├── strategy.yml
+│   │       │   │       └── update_catalog.py
+│   │       │   ├── security_categories.md
+│   │       │   └── security_tags.md
+│   │       └── write-readme
 │   │           └── SKILL.md
 │   ├── craft-skills
 │   │   ├── .claude-plugin
@@ -90,7 +109,7 @@ scripts/update-readme-tree.sh                # keep the directory tree current
 │   │   ├── assets
 │   │   │   └── icon.png
 │   │   └── skills
-│   │       ├── create-project-assets
+│   │       ├── create-brand-assets
 │   │       │   ├── SKILL.md
 │   │       │   ├── examples
 │   │       │   │   └── discord-cozy-grove
@@ -169,30 +188,7 @@ scripts/update-readme-tree.sh                # keep the directory tree current
 │   │       │   └── SKILL.md
 │   │       ├── check-beehive
 │   │       │   └── SKILL.md
-│   │       ├── mimi-cyber
-│   │       │   ├── SKILL.md
-│   │       │   ├── ai_categories.md
-│   │       │   ├── ai_tags.md
-│   │       │   ├── attack_categories.md
-│   │       │   ├── attack_tags.md
-│   │       │   ├── commands
-│   │       │   │   ├── display-cyber.md
-│   │       │   │   └── update-meta-catalog.md
-│   │       │   ├── resources
-│   │       │   │   ├── articles
-│   │       │   │   │   ├── 2026-10-linux-infrastructure-campaign.md
-│   │       │   │   │   └── 2026-10-prompt-injection.md
-│   │       │   │   └── scripts
-│   │       │   │       ├── actors.yml
-│   │       │   │       ├── attacks.yml
-│   │       │   │       ├── checks.yml
-│   │       │   │       ├── strategy.yml
-│   │       │   │       └── update_catalog.py
-│   │       │   ├── security_categories.md
-│   │       │   └── security_tags.md
-│   │       ├── mimi-world
-│   │       │   └── SKILL.md
-│   │       └── write-readme
+│   │       └── mimi-world
 │   │           └── SKILL.md
 │   └── soft-skills
 │       ├── .claude-plugin

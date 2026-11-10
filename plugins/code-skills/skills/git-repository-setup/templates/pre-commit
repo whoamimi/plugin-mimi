@@ -1,0 +1,41 @@
+#!/usr/bin/env bash
+# Block staged secrets and large files, then run the project's fast checks.
+# Install: git config core.hooksPath .githooks
+set -euo pipefail
+
+# Files above this size (in bytes) belong in releases or Git LFS, not history.
+MAX_BYTES=$((5 * 1024 * 1024))
+status=0
+
+while IFS= read -r -d '' file; do
+  [ -f "$file" ] || continue
+  case "$file" in
+    .env|*/.env|.env.*|*/.env.*|*.pem|*.key|*.p12|*.pfx|id_rsa|*/id_rsa|id_ed25519|*/id_ed25519)
+      case "$file" in *.example|*.sample|*.template) ;; *)
+        echo "pre-commit: refusing to commit a likely secret file: $file" >&2
+        status=1 ;;
+      esac ;;
+  esac
+  size=$(wc -c < "$file")
+  if [ "$size" -gt "$MAX_BYTES" ]; then
+    echo "pre-commit: $file is $((size / 1024 / 1024)) MB (limit 5 MB); use Git LFS or a release asset" >&2
+    status=1
+  fi
+done < <(git diff --cached --name-only --diff-filter=ACM -z)
+
+# Common token formats in the staged changes (added lines only).
+patterns='-----BEGIN [A-Z ]*PRIVATE KEY-----|AKIA[0-9A-Z]{16}|gh[pousr]_[A-Za-z0-9]{36,}|sk-[A-Za-z0-9_-]{20,}|xox[baprs]-[A-Za-z0-9-]{10,}'
+if git diff --cached -U0 --diff-filter=ACM | grep -E '^\+' | grep -Eq -- "$patterns"; then
+  echo "pre-commit: the staged changes contain what looks like a key or token; remove it (and rotate it if it was real)" >&2
+  status=1
+fi
+
+if [ "$status" -ne 0 ]; then
+  echo "pre-commit: commit blocked. Bypass only for a false positive: git commit --no-verify" >&2
+  exit "$status"
+fi
+
+# Project's own fast checks, if it has them.
+if [ -x scripts/check.sh ]; then
+  scripts/check.sh
+fi

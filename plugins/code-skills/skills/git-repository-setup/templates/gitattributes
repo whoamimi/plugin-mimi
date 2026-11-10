@@ -1,0 +1,25 @@
+# Normalise line endings to LF in the repository; Git converts on checkout where needed.
+* text=auto eol=lf
+
+# Windows scripts keep CRLF.
+*.bat  text eol=crlf
+*.cmd  text eol=crlf
+*.ps1  text eol=crlf
+
+# Binary files: never diff or convert.
+*.png  binary
+*.jpg  binary
+*.jpeg binary
+*.gif  binary
+*.webp binary
+*.ico  binary
+*.pdf  binary
+*.zip  binary
+*.gz   binary
+*.woff binary
+*.woff2 binary
+
+# Generated lock files: collapse in diffs.
+package-lock.json linguist-generated=true -diff
+uv.lock           linguist-generated=true -diff
+poetry.lock       linguist-generated=true -diff
