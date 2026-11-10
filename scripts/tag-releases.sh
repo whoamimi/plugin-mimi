@@ -1,7 +1,8 @@
 #!/usr/bin/env bash
 # Tag each plugin's current version as <plugin>--v<version> on HEAD.
 # This is the release-tag convention Claude Code resolves plugin dependency
-# version ranges against. Existing tags are never moved.
+# version ranges against. Existing tags are never moved; --push publishes
+# every current release tag, so a run whose push failed can simply be repeated.
 # Usage: scripts/tag-releases.sh [--push]
 set -euo pipefail
 
@@ -15,10 +16,12 @@ elif [ -n "${1:-}" ]; then
   exit 2
 fi
 
+release_tags=()
 new_tags=()
 for manifest in plugins/*/.claude-plugin/plugin.json; do
   read -r name version < <(python3 -c 'import json,sys; d=json.load(open(sys.argv[1])); print(d["name"], d["version"])' "$manifest")
   tag="${name}--v${version}"
+  release_tags+=("${tag}")
   if git rev-parse --quiet --verify "refs/tags/${tag}" >/dev/null; then
     echo "exists  ${tag}"
     continue
@@ -28,10 +31,12 @@ for manifest in plugins/*/.claude-plugin/plugin.json; do
   echo "created ${tag}"
 done
 
-if [ "${#new_tags[@]}" -eq 0 ]; then
+if [ "${push}" = true ]; then
+  # Tags already on the remote at the same commit are left as they are; a tag
+  # that points elsewhere on the remote makes the push fail rather than move it.
+  git push origin "${release_tags[@]}"
+elif [ "${#new_tags[@]}" -eq 0 ]; then
   echo "No new release tags."
-elif [ "${push}" = true ]; then
-  git push origin "${new_tags[@]}"
 else
-  echo "Push with: git push origin ${new_tags[*]}"
+  echo "Push with: $0 --push"
 fi

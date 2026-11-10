@@ -31,7 +31,7 @@ claude plugin marketplace update plugin-mimi
 claude plugin update <plugin-name>@plugin-mimi
 ```
 
-Every released version is tagged `<plugin>--v<version>` (for example `soft-skills--v2.0.0`), the convention Claude Code uses to resolve plugin dependency version ranges. After a merge, the workflow tags new versions; to tag by hand, run `scripts/tag-releases.sh --push` on `main`.
+Every released version is tagged `<plugin>--v<version>` (for example `soft-skills--v2.0.0`), the convention Claude Code uses to resolve plugin dependency version ranges. After a merge, the workflow tags new versions; to tag by hand, run `scripts/tag-releases.sh --push` on `main` (safe to repeat: it publishes any tags not yet on GitHub and never moves an existing one).
 
 ## Checks
 
