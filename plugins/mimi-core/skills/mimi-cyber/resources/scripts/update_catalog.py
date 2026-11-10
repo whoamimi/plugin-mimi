@@ -135,26 +135,31 @@ def main():
         "attack_tags.md": collect(actors, "tags"),
     }
 
-    stale = []
+    for p in problems:
+        print(f"problem: {p}")
+    # Never rewrite the indexes from catalogs that failed validation: a broken
+    # YAML file would otherwise wipe the last good index.
+    if problems and not a.check:
+        print("no index files written; fix the problems above and run again")
+        return 1
+
+    stale = {}
     for name, labels in indexes.items():
         body = HEADER + f"\n# {TITLES[name]}\n\n"
         body += "".join(f"- {label}\n" for label in sorted(labels)) if labels else "_None yet._\n"
         path = SKILL / name
-        current = path.read_text() if path.exists() else None
-        if current != body:
-            stale.append(name)
-            if not a.check:
-                path.write_text(body)
+        if (path.read_text() if path.exists() else None) != body:
+            stale[path] = body
         print(f"{name:<24} {len(labels)} label(s)")
 
-    for p in problems:
-        print(f"problem: {p}")
     if a.check:
-        for name in stale:
-            print(f"out of date: {name} (run update_catalog.py)")
+        for path in stale:
+            print(f"out of date: {path.name} (run update_catalog.py)")
         return 1 if stale or problems else 0
+    for path, body in stale.items():
+        path.write_text(body)
     print(f"updated {len(stale)} file(s)" if stale else "all indexes already up to date")
-    return 1 if problems else 0
+    return 0
 
 
 if __name__ == "__main__":
