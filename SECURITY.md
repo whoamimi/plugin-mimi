@@ -33,7 +33,7 @@ Public issues are fine for non-security bugs and suggestions.
 **Out of scope**
 
 - Claude, Claude Code and the Claude apps themselves: report those to [Anthropic](https://www.anthropic.com/responsible-disclosure-policy).
-- Plugins from other marketplaces, such as `code-review` from `claude-plugins-official`, which `code-skills` depends on: report those to their maintainers.
+- Plugins from other marketplaces: report those to their maintainers.
 - Issues that need the user to approve an action Claude asked about.
 - Forks and modified copies.
 
@@ -60,7 +60,7 @@ If a secret is committed, treat it as exposed: revoke or rotate it first, then r
 
 ### Dependencies
 
-- `code-skills` depends on `code-review` from Anthropic's `claude-plugins-official` marketplace. `marketplace.json` allows dependencies from that marketplace only (`allowCrossMarketplaceDependenciesOn`); adding another marketplace there requires a review of its plugins first.
+- No plugin depends on another marketplace, and `marketplace.json` allows none (`allowCrossMarketplaceDependenciesOn` is unset). Adding a cross-marketplace dependency requires a review of that marketplace's plugins first.
 - The workflow pins the Claude Code CLI and `ruff` to exact versions. Update them deliberately, not automatically.
 
 ### Automatic merge

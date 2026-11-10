@@ -18,6 +18,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0  # full history: the version check diffs against the base branch
 
       - uses: actions/setup-node@v4
         with:
@@ -35,33 +37,10 @@ jobs:
           pip install ruff==0.16.8 pyyaml==6.0.2
           sudo apt-get update -qq && sudo apt-get install -y -qq shellcheck tree
 
-      - name: Validate marketplace and plugins (strict)
-        run: |
-          claude plugin validate --strict .
-          for plugin in plugins/*/; do
-            claude plugin validate --strict "$plugin"
-          done
-
-      - name: Lint skills against authoring best practices
-        run: python3 scripts/lint-plugins.py
-
-      - name: Check mimi-cyber catalog indexes
-        run: python3 plugins/mimi-core/skills/mimi-cyber/resources/scripts/update_catalog.py --check
-
-      - name: Lint Python scripts
-        run: ruff check --select E9,F .
-
-      - name: Lint shell scripts
-        run: shellcheck scripts/*.sh
-
-      - name: Check README directory tree is current
-        run: |
-          scripts/update-readme-tree.sh
-          if ! git diff --quiet README.md; then
-            echo "::error file=README.md::Directory tree is out of date. Run scripts/update-readme-tree.sh and commit."
-            git diff README.md
-            exit 1
-          fi
+      - name: Run all checks (same as scripts/check.sh locally)
+        env:
+          CI: "true"
+        run: scripts/check.sh --full --base "origin/${{ github.base_ref }}"
 
   merge:
     needs: check
@@ -104,3 +83,20 @@ jobs:
           git commit -am "Update README directory tree"
           git pull --rebase origin main
           git push origin HEAD:main
+
+  tag-releases:
+    needs: update-readme
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+          fetch-depth: 0
+
+      - name: Tag new plugin versions
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          scripts/tag-releases.sh --push

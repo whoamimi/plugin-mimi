@@ -1,9 +1,19 @@
 {
   "name": "soft-skills",
-  "version": "1.0.0",
+  "displayName": "Soft Skills",
+  "version": "2.0.0",
   "description": "Mimi's soft skills bundle to assist user's life in communicating and articulating thoughts to others.",
   "author": {
     "name": "Mimi"
   },
-  "icon": "./assets/icon.png"
+  "homepage": "https://github.com/whoamimi/plugin-mimi/tree/main/plugins/soft-skills",
+  "repository": "https://github.com/whoamimi/plugin-mimi",
+  "icon": "./assets/icon.png",
+  "keywords": [
+    "writing",
+    "grammar",
+    "vocabulary",
+    "tone",
+    "meeting-notes"
+  ]
 }

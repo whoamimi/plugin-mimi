@@ -1,12 +1,17 @@
 {
   "name": "mimi-core",
-  "version": "1.0.0",
-  "description": "Mimi's admin & housekeeping tasks for editing, reviewing, checking tech documentations for projects' codebase, progression tracks and general software practices e.g. CI/CD workflows on Github, plus cybersecurity and AI governance learning notes and audit catalogs.",
+  "displayName": "Mimi Core",
+  "version": "2.0.0",
+  "description": "Mimi's personal core skills: home network status checks, macOS security audits and background on the user's own projects and setup.",
   "author": {
     "name": "Mimi"
   },
+  "homepage": "https://github.com/whoamimi/plugin-mimi/tree/main/plugins/mimi-core",
+  "repository": "https://github.com/whoamimi/plugin-mimi",
   "icon": "./assets/icon.png",
-  "commands": [
-    "./skills/mimi-cyber/commands/"
+  "keywords": [
+    "home-network",
+    "macos-security",
+    "personal-context"
   ]
 }

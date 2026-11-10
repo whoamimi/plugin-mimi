@@ -41,11 +41,11 @@ Paths below are relative to `${CLAUDE_PLUGIN_ROOT}/skills/mimi-cyber/`.
 
 ### 3. Update the catalog indexes
 
-Follow `commands/update-meta-catalog.md` (also the `/mimi-core:update-meta-catalog` command). It runs `resources/scripts/update_catalog.py`, which rebuilds the six index files from the YAML.
+Follow `commands/update-meta-catalog.md` (also the `/code-skills:update-meta-catalog` command). It runs `resources/scripts/update_catalog.py`, which rebuilds the six index files from the YAML.
 
 ### 4. Display the catalog
 
-Follow `commands/display-cyber.md` (also `/mimi-core:display-cyber`).
+Follow `commands/display-cyber.md` (also `/code-skills:display-cyber`).
 
 ### 5. Use the catalog in a project
 
