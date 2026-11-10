@@ -4,6 +4,10 @@ Each plugin is versioned on its own with [semantic versioning](https://semver.or
 
 ## code-skills
 
+### 2.1.0
+- Added `python-like-mimi`, `react-like-mimi` and `react-native-like-mimi` coding style skills.
+- Updated `backup-project`.
+
 ### 2.0.0
 - **Breaking:** removed `mimi-pr-review` and `hipaa-readiness-audit`, and with them the dependency on Anthropic's `code-review` plugin.
 - Added `git-repository-setup`: main branch, repository files, committed hooks, CI workflow templates, branch protection ruleset and release versioning.
@@ -18,6 +22,9 @@ Each plugin is versioned on its own with [semantic versioning](https://semver.or
 
 ## craft-skills
 
+### 2.0.1
+- Reformatted the plugin manifest.
+
 ### 2.0.0
 - **Breaking:** renamed `create-project-assets` to `create-brand-assets`, which now uses `mimi-sprite-studio` as its default design generator.
 - `mimi-sprite-studio`: `render_svg.py` gained `--height` for non-square art such as banners.
@@ -29,6 +36,10 @@ Each plugin is versioned on its own with [semantic versioning](https://semver.or
 - `mimi-sprite-studio`.
 
 ## life-skills
+
+### 2.0.0
+- **Breaking:** renamed `daily-decision-maker` to `make-decisions`.
+- **Breaking:** removed `mimi-cbt`.
 
 ### 1.1.0
 - Added `daily-decision-maker`.

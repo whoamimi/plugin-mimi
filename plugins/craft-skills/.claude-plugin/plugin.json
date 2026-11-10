@@ -1,20 +1,20 @@
 {
-  "name": "craft-skills",
-  "displayName": "Craft Skills",
-  "version": "2.0.0",
-  "description": "Mimi's creative and reflective skills: sprite and sticker art, mascot profile pictures, branded asset kits (Discord bots, Google Play listings), daily astrology and interactive tarot readings.",
-  "author": {
-    "name": "Mimi"
-  },
-  "homepage": "https://github.com/whoamimi/plugin-mimi/tree/main/plugins/craft-skills",
-  "repository": "https://github.com/whoamimi/plugin-mimi",
-  "icon": "./assets/icon.png",
-  "keywords": [
-    "sprites",
-    "stickers",
-    "background-removal",
-    "animation",
-    "discord",
-    "mascot"
-  ]
+	"name": "craft-skills",
+	"displayName": "Craft Skills",
+	"version": "2.0.1",
+	"description": "Mimi's creative and reflective skills: sprite and sticker art, mascot profile pictures, branded asset kits (Discord bots, Google Play listings), daily astrology and interactive tarot readings.",
+	"author": {
+		"name": "Mimi"
+	},
+	"homepage": "https://github.com/whoamimi/plugin-mimi/tree/main/plugins/craft-skills",
+	"repository": "https://github.com/whoamimi/plugin-mimi",
+	"icon": "./assets/icon.png",
+	"keywords": [
+		"sprites",
+		"stickers",
+		"background-removal",
+		"animation",
+		"discord",
+		"mascot"
+	]
 }

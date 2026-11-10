@@ -17,11 +17,11 @@ Version badges read each plugin's `plugin.json` on `main`, so they update on eve
 <!-- plugins:start -->
 | Plugin | Version | Skills | Install |
 |---|---|---|---|
-| [Life Skills](https://github.com/whoamimi/plugin-mimi/tree/main/plugins/life-skills) | ![life-skills version](https://img.shields.io/badge/dynamic/json?url=https%3A%2F%2Fraw.githubusercontent.com%2Fwhoamimi%2Fplugin-mimi%2Fmain%2Fplugins%2Flife-skills%2F.claude-plugin%2Fplugin.json&query=%24.version&label=version&color=blue) | `check-gmail`, `daily-decision-maker`, `mimi-cbt` | `claude plugin install life-skills@plugin-mimi` |
+| [Life Skills](https://github.com/whoamimi/plugin-mimi/tree/main/plugins/life-skills) | ![life-skills version](https://img.shields.io/badge/dynamic/json?url=https%3A%2F%2Fraw.githubusercontent.com%2Fwhoamimi%2Fplugin-mimi%2Fmain%2Fplugins%2Flife-skills%2F.claude-plugin%2Fplugin.json&query=%24.version&label=version&color=blue) | `check-gmail`, `make-decisions` | `claude plugin install life-skills@plugin-mimi` |
 | [Soft Skills](https://github.com/whoamimi/plugin-mimi/tree/main/plugins/soft-skills) | ![soft-skills version](https://img.shields.io/badge/dynamic/json?url=https%3A%2F%2Fraw.githubusercontent.com%2Fwhoamimi%2Fplugin-mimi%2Fmain%2Fplugins%2Fsoft-skills%2F.claude-plugin%2Fplugin.json&query=%24.version&label=version&color=blue) | `mimi-edit`, `mimi-notes-summary`, `mimi-rephrase`, `mimi-tutor` | `claude plugin install soft-skills@plugin-mimi` |
 | [Mimi Core](https://github.com/whoamimi/plugin-mimi/tree/main/plugins/mimi-core) | ![mimi-core version](https://img.shields.io/badge/dynamic/json?url=https%3A%2F%2Fraw.githubusercontent.com%2Fwhoamimi%2Fplugin-mimi%2Fmain%2Fplugins%2Fmimi-core%2F.claude-plugin%2Fplugin.json&query=%24.version&label=version&color=blue) | `audit-mimis-imac`, `check-beehive`, `mimi-world` | `claude plugin install mimi-core@plugin-mimi` |
 | [Craft Skills](https://github.com/whoamimi/plugin-mimi/tree/main/plugins/craft-skills) | ![craft-skills version](https://img.shields.io/badge/dynamic/json?url=https%3A%2F%2Fraw.githubusercontent.com%2Fwhoamimi%2Fplugin-mimi%2Fmain%2Fplugins%2Fcraft-skills%2F.claude-plugin%2Fplugin.json&query=%24.version&label=version&color=blue) | `create-brand-assets`, `get-astro-today`, `mimi-sprite-studio`, `run-tarot-reading` | `claude plugin install craft-skills@plugin-mimi` |
-| [Code Skills](https://github.com/whoamimi/plugin-mimi/tree/main/plugins/code-skills) | ![code-skills version](https://img.shields.io/badge/dynamic/json?url=https%3A%2F%2Fraw.githubusercontent.com%2Fwhoamimi%2Fplugin-mimi%2Fmain%2Fplugins%2Fcode-skills%2F.claude-plugin%2Fplugin.json&query=%24.version&label=version&color=blue) | `backup-project`, `depth-breakdown`, `get-started`, `git-repository-setup`, `mimi-cyber`, `write-readme` | `claude plugin install code-skills@plugin-mimi` |
+| [Code Skills](https://github.com/whoamimi/plugin-mimi/tree/main/plugins/code-skills) | ![code-skills version](https://img.shields.io/badge/dynamic/json?url=https%3A%2F%2Fraw.githubusercontent.com%2Fwhoamimi%2Fplugin-mimi%2Fmain%2Fplugins%2Fcode-skills%2F.claude-plugin%2Fplugin.json&query=%24.version&label=version&color=blue) | `backup-project`, `depth-breakdown`, `get-started`, `git-repository-setup`, `mimi-cyber`, `python-like-mimi`, `react-like-mimi`, `react-native-like-mimi`, `write-readme` | `claude plugin install code-skills@plugin-mimi` |
 <!-- plugins:end -->
 
 ## Installation
@@ -74,178 +74,23 @@ Bypass a hook once with `--no-verify` only for a false positive.
 <!-- tree:start -->
 ```text
 .
-├── .claude
-│   ├── hooks
-│   │   └── session-start.sh
-│   └── settings.json
-├── .claude-plugin
-│   └── marketplace.json
-├── .githooks
-│   ├── post-merge
-│   ├── pre-commit
-│   └── pre-push
-├── .github
-│   └── workflows
-│       └── pr-check-and-merge.yml
-├── .gitignore
-├── CHANGELOG.md
-├── README.md
-├── SECURITY.md
 ├── assets
-│   └── logo.png
 ├── plugins
 │   ├── code-skills
-│   │   ├── .claude-plugin
-│   │   │   └── plugin.json
 │   │   ├── assets
-│   │   │   └── icon.png
 │   │   └── skills
-│   │       ├── backup-project
-│   │       │   └── SKILL.md
-│   │       ├── depth-breakdown
-│   │       │   └── SKILL.md
-│   │       ├── get-started
-│   │       │   └── SKILL.md
-│   │       ├── git-repository-setup
-│   │       │   ├── SKILL.md
-│   │       │   └── templates
-│   │       │       ├── ci-node.yml
-│   │       │       ├── ci-python.yml
-│   │       │       ├── commit-msg
-│   │       │       ├── dependabot.yml
-│   │       │       ├── gitattributes
-│   │       │       ├── pre-commit
-│   │       │       ├── pull_request_template.md
-│   │       │       └── ruleset-main.json
-│   │       ├── mimi-cyber
-│   │       │   ├── SKILL.md
-│   │       │   ├── ai_categories.md
-│   │       │   ├── ai_tags.md
-│   │       │   ├── attack_categories.md
-│   │       │   ├── attack_tags.md
-│   │       │   ├── commands
-│   │       │   │   ├── display-cyber.md
-│   │       │   │   └── update-meta-catalog.md
-│   │       │   ├── resources
-│   │       │   │   ├── articles
-│   │       │   │   │   ├── 2026-10-linux-infrastructure-campaign.md
-│   │       │   │   │   └── 2026-10-prompt-injection.md
-│   │       │   │   └── scripts
-│   │       │   │       ├── actors.yml
-│   │       │   │       ├── attacks.yml
-│   │       │   │       ├── checks.yml
-│   │       │   │       ├── strategy.yml
-│   │       │   │       └── update_catalog.py
-│   │       │   ├── security_categories.md
-│   │       │   └── security_tags.md
-│   │       └── write-readme
-│   │           └── SKILL.md
 │   ├── craft-skills
-│   │   ├── .claude-plugin
-│   │   │   └── plugin.json
 │   │   ├── assets
-│   │   │   └── icon.png
 │   │   └── skills
-│   │       ├── create-brand-assets
-│   │       │   ├── SKILL.md
-│   │       │   ├── examples
-│   │       │   │   └── discord-cozy-grove
-│   │       │   │       ├── cozy_grove
-│   │       │   │       │   ├── README.md
-│   │       │   │       │   ├── __init__.py
-│   │       │   │       │   ├── __main__.py
-│   │       │   │       │   ├── assets
-│   │       │   │       │   │   ├── banner_event.gif
-│   │       │   │       │   │   ├── banner_news.gif
-│   │       │   │       │   │   ├── banner_rules.gif
-│   │       │   │       │   │   ├── banner_welcome.gif
-│   │       │   │       │   │   ├── cat_idle.gif
-│   │       │   │       │   │   ├── divider.gif
-│   │       │   │       │   │   ├── emoji_cozy_cat.gif
-│   │       │   │       │   │   ├── emoji_cozy_cat.png
-│   │       │   │       │   │   ├── emoji_mushroom.png
-│   │       │   │       │   │   ├── emoji_orange.png
-│   │       │   │       │   │   ├── emoji_sprout.png
-│   │       │   │       │   │   └── icon_leaf.png
-│   │       │   │       │   ├── make_assets.py
-│   │       │   │       │   └── style.py
-│   │       │   │       └── preview.png
-│   │       │   ├── profiles
-│   │       │   │   ├── TEMPLATE.md
-│   │       │   │   ├── discord-bot.json
-│   │       │   │   ├── discord-bot.md
-│   │       │   │   ├── google-play.json
-│   │       │   │   └── google-play.md
-│   │       │   ├── references
-│   │       │   │   └── style-brief.md
-│   │       │   └── scripts
-│   │       │       ├── check_assets.py
-│   │       │       ├── contact_sheet.py
-│   │       │       └── palette_from_image.py
-│   │       ├── get-astro-today
-│   │       │   └── SKILL.md
-│   │       ├── mimi-sprite-studio
-│   │       │   ├── SKILL.md
-│   │       │   ├── references
-│   │       │   │   ├── layered-animation.md
-│   │       │   │   └── mascot-styles.md
-│   │       │   └── scripts
-│   │       │       ├── animate.py
-│   │       │       ├── cutout.py
-│   │       │       └── render_svg.py
-│   │       └── run-tarot-reading
-│   │           ├── SKILL.md
-│   │           ├── assets
-│   │           │   ├── card_picker.html
-│   │           │   └── deck.json
-│   │           ├── references
-│   │           │   ├── reading-craft.md
-│   │           │   └── spreads.md
-│   │           └── scripts
-│   │               └── tarot.py
 │   ├── life-skills
-│   │   ├── .claude-plugin
-│   │   │   └── plugin.json
 │   │   ├── assets
-│   │   │   └── icon.png
 │   │   └── skills
-│   │       ├── check-gmail
-│   │       │   └── SKILL.md
-│   │       ├── daily-decision-maker
-│   │       │   └── SKILL.md
-│   │       └── mimi-cbt
-│   │           └── SKILL.md
 │   ├── mimi-core
-│   │   ├── .claude-plugin
-│   │   │   └── plugin.json
 │   │   ├── assets
-│   │   │   └── icon.png
 │   │   └── skills
-│   │       ├── audit-mimis-imac
-│   │       │   └── SKILL.md
-│   │       ├── check-beehive
-│   │       │   └── SKILL.md
-│   │       └── mimi-world
-│   │           └── SKILL.md
 │   └── soft-skills
-│       ├── .claude-plugin
-│       │   └── plugin.json
 │       ├── assets
-│       │   └── icon.png
 │       └── skills
-│           ├── mimi-edit
-│           │   └── SKILL.md
-│           ├── mimi-notes-summary
-│           │   └── SKILL.md
-│           ├── mimi-rephrase
-│           │   └── SKILL.md
-│           └── mimi-tutor
-│               └── SKILL.md
 └── scripts
-    ├── check.sh
-    ├── lint-plugins.py
-    ├── tag-releases.sh
-    ├── update-readme-plugins.py
-    └── update-readme-tree.sh
 ```
 <!-- tree:end -->
