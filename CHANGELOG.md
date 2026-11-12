@@ -37,6 +37,9 @@ Each plugin is versioned on its own with [semantic versioning](https://semver.or
 
 ## life-skills
 
+### 2.1.0
+- Added `review-reflections`: daily and weekly CBT-informed reviews of the Reflections Notion database, with rubric scores, attention bands, a personal baseline and a safety check first.
+
 ### 2.0.0
 - **Breaking:** renamed `daily-decision-maker` to `make-decisions`.
 - **Breaking:** removed `mimi-cbt`.
