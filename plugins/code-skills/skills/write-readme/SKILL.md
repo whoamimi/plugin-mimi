@@ -3,13 +3,13 @@ name: write-readme
 description: Writes or updates a project's README.md to match a fixed template with badges, highlights, directory overview, system architecture and dev notes. Use when the user asks to write, rewrite, update or tidy a repository's README, or to document a project for GitHub. Examples include "write a README for this repo", "update my README to the usual template", "document this project" and "my README is out of date".
 ---
 
-Prior to performing task, check that the github repository is attached to this chat, otherwise, prompt the user to attach repository. 
+Prior to performing task, check that the github repository is attached to this chat, otherwise, prompt the user to attach repository.
 
 Update the attached github repository's README.md file. Your README.md file must align with the following template example below.
 
 # README.md Template
 
-```markdown
+````markdown
 # Project Title
 
 [ensure to include shields.io badges alike examples below]
@@ -24,6 +24,7 @@ A concise, **one-to-two sentence description** of what this project does, the pr
 - **Objective**: [main objective of the entire project]
 - **Key Feature** [input the feature/method/intent/agenda of this project. If multiple features then please list in summary points]
 - **Tech stack** [input how the key feature/s was/were implemented in this project e.g. depended open source library, dataset used if any,.etc]
+
 * **Evaluation** [input how the idea/feature/model/algorithm was tested, any GPU acceleration, parallelization, or speed benchmarks]
 * **Results & Conclusion** [list maximum of 2-3 summary points of the conclusion and decision made based on the idea implementation. Also, list extension to this project in moving forward]
 
@@ -32,6 +33,7 @@ A concise, **one-to-two sentence description** of what this project does, the pr
 [use CLI `tree` e.g. `tree -L 4 -d -I '__pycache__|.venv|node_modules' >` to return the subdirectory structure in the following example format]
 
 Example project structure
+
 ```text
 ├── data/               # Raw and processed scientific data
 ├── src/                # Core source code and algorithms
@@ -39,9 +41,9 @@ Example project structure
 ├── config.yaml         # Hyperparameters and file paths
 └── main.py             # Main execution script
 ```
+````
 
 ## System Architecture
-
 
 ## Dev Notes
 
@@ -50,33 +52,34 @@ Example project structure
 
 - **Installation**: [input bash code of CLI steps installing the Git repo alike example below]
 
-    ```bash
-    # Clone the repository
-    git clone https://github.com
-    cd project-name
-    
-    # Create and activate environment
-    conda create -n sci-env python=3.10 -y
-    conda activate sci-env
-    
-    # Install dependencies
-    pip install -r requirements.txt
-    ```
+  ```bash
+  # Clone the repository
+  git clone https://github.com
+  cd project-name
 
- - **To start**: [input bash code of CLI steps starting/executing the project]
-    ```bash
-    python main.py --config config/demo.yaml
-    ```
+  # Create and activate environment
+  conda create -n sci-env python=3.10 -y
+  conda activate sci-env
 
-  - **Test**: [input bash code of CLI steps to run checks and tests on project]
+  # Install dependencies
+  pip install -r requirements.txt
+  ```
 
-  - [You may skip this part if there was no research paper mentioned throughout the source code. Otherwise, refer to examples below]
-    - **Reproducing Results**: To reproduce the primary findings or figures stated in the paper/documentation:
-      1. Update paths in `config.yaml`.
-      2. Run the training/analysis pipeline:
-           ```bash
-           python src/pipeline.py --mode train
-           ```
+- **To start**: [input bash code of CLI steps starting/executing the project]
+
+  ```bash
+  python main.py --config config/demo.yaml
+  ```
+
+- **Test**: [input bash code of CLI steps to run checks and tests on project]
+
+- [You may skip this part if there was no research paper mentioned throughout the source code. Otherwise, refer to examples below]
+  - **Reproducing Results**: To reproduce the primary findings or figures stated in the paper/documentation:
+    1. Update paths in `config.yaml`.
+    2. Run the training/analysis pipeline:
+       ```bash
+       python src/pipeline.py --mode train
+       ```
 
 ## Citation
 

@@ -14,6 +14,7 @@ Choose the mode from my request; combine them when useful.
 ### 1. Word Exploration
 
 For a word (or a word in my sentence), analyse:
+
 1. Literal meaning and contextual meaning.
 2. Connotation and register.
 3. Stronger or more precise alternatives, and the difference in nuance between them.
@@ -28,6 +29,7 @@ Prioritise vocabulary that improves precision, descriptive power, nuance and rhe
 ### 2. Rule Explanation
 
 Explain the grammar or usage rule in simple language, then show:
+
 - an incorrect or unnatural example,
 - the corrected example,
 - one or two further examples in different contexts.
@@ -43,6 +45,7 @@ Across the conversation, track words I overuse and mistakes I repeat. When a pat
 ## Response Format
 
 **Word Exploration** — for each suggestion:
+
 - **Suggestion:** [word or phrase]
 - **Meaning & nuance:** [how it differs from the original]
 - **Usage example:** [1–2 example sentences]
