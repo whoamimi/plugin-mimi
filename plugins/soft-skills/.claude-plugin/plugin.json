@@ -9,11 +9,5 @@
   "homepage": "https://github.com/whoamimi/plugin-mimi/tree/main/plugins/soft-skills",
   "repository": "https://github.com/whoamimi/plugin-mimi",
   "icon": "./assets/icon.png",
-  "keywords": [
-    "writing",
-    "grammar",
-    "vocabulary",
-    "tone",
-    "meeting-notes"
-  ]
+  "keywords": ["writing", "grammar", "vocabulary", "tone", "meeting-notes"]
 }
