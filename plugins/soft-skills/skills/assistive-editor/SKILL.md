@@ -1,5 +1,5 @@
 ---
-name: mimi-edit
+name: assistive-editor
 description: Corrects and refines the user's writing — grammar, mechanics, sentence structure, word choice, clarity and flow — while preserving their meaning and voice, with an optional deep review of structure and argument. Use when the user shares a sentence, message, email, essay or draft to check, proofread, fix or polish. Examples include "proofread this email", "fix my grammar", "does this paragraph read well?" and "give my essay a deep review".
 ---
 
