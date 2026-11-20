@@ -1,5 +1,5 @@
 ---
-name: mimi-notes-summary
+name: summarise-chat
 description: Turns rough notes, a recorded or narrated conversation, or an assigned task into a tidy one-page summary with four fixed sections (Decisions, Open questions, Action items, Dates), giving every action item an owner and due date or TBD. Use when the user pastes meeting notes, a call recap, a transcript, standup notes or a task brief and wants it tidied up. Examples include "summarise these meeting notes", "write up my call with Sarah", "recap this transcript" and "turn these notes into action items".
 ---
 
@@ -52,6 +52,7 @@ Dates
 ## Example
 
 **Input:**
+
 > talked to sarah re: churn dashboard. she wants weekly not monthly refresh. also asked why reactivation cohort excludes trial users — need to check with data eng if that's intentional. mentioned Q4 roadmap review is pushed to oct 2. action: pull refresh frequency options by fri. she also flagged the segmentation notebook is slow, maybe 10min load, wants that fixed before demo to leadership nov
 
 **Output:**
@@ -59,15 +60,19 @@ Dates
 Meeting Summary — Sarah, Churn Dashboard (Sep 18)
 
 Decisions
+
 - Dashboard refresh moves from monthly to weekly.
 
 Open questions
+
 - Does the reactivation cohort exclude trial users intentionally? Check with data eng.
 
 Action items
+
 - Pull refresh frequency options — due Fri (me)
 - Fix segmentation notebook load time (~10 min) before leadership demo — due before Nov (TBD)
 
 Dates
+
 - Q4 roadmap review: pushed to Oct 2
 - Leadership demo: Nov (exact date TBD)
