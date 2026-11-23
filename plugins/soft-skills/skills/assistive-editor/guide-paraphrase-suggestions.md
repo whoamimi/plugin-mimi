@@ -1,11 +1,6 @@
----
-name: mimi-rephrase
-description: Shows the user how to say or write the same idea in different tones and for different audiences, in writing or out loud, and recommends the best fit with delivery tips for spoken situations. Use when the user wants alternative wording, a different tone, or help saying something to a particular person. Examples include "say this differently", "make this more diplomatic", "how do I tell my manager I'm overloaded?" and "how would I say this in a meeting?".
----
+# Writing Guidelines
 
-# Tone & Delivery Guide
-
-## Steps
+## Workflow Steps
 
 1. Identify the **core intent**: what I actually want to say or achieve.
 2. Identify the **audience** and **channel**: written (email, message, document) or spoken (meeting, call, conversation, presentation). Infer from context; ask only if it changes the answer.
@@ -25,6 +20,7 @@ description: Shows the user how to say or write the same idea in different tones
 ## Spoken Delivery
 
 When the channel is spoken:
+
 - Use shorter sentences, natural contractions and plain words that are easy to say and hear.
 - Lead with the main point; avoid long subordinate clauses.
 - Add brief delivery tips: what to emphasise, where to pause, and phrases or habits to avoid (fillers, over-apologising, excessive hedging).
@@ -35,6 +31,7 @@ When the channel is spoken:
 **Audience / channel:** [who, and written or spoken]
 
 **Alternatives:**
+
 - **Direct / Assertive** — [rewrite]
 - **Casual / Friendly** — [rewrite]
 - **Formal / Polished** — [rewrite]

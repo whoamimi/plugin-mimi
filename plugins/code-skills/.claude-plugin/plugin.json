@@ -17,5 +17,6 @@
     "cybersecurity",
     "ai-governance"
   ],
+  "skills": ["./skills"],
   "commands": ["./skills/mimi-cyber/commands/"]
 }

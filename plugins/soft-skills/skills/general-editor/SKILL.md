@@ -1,5 +1,5 @@
 ---
-name: blog-editor
+name: general-editor
 description: Interactive grammar and editorial review for VitePress Markdown blog posts and pages. Review proposed edits individually and apply only user-approved replacements.
 argument-hint: "[file-or-directory]"
 disable-model-invocation: true
